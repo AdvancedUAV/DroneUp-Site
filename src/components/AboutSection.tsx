@@ -93,10 +93,9 @@ const AboutSection: React.FC = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
-              whileHover={{ y: -10 }}
-              className="bg-white rounded-xl shadow-lg p-6 text-center group hover:shadow-xl transition-all duration-300"
+              className="bg-white rounded-xl shadow-lg p-6 text-center"
             >
-              <div className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r ${feature.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+              <div className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r ${feature.color} flex items-center justify-center`}>
                 <feature.icon className="text-white text-2xl" />
               </div>
               <h4 className="text-xl font-orbitron font-semibold text-deep-space mb-3">
@@ -122,7 +121,6 @@ const AboutSection: React.FC = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.6, delay: 1 + index * 0.1 }}
-              whileHover={{ scale: 1.05 }}
               className="text-center"
             >
               <div className="bg-gradient-to-r from-electric-blue to-neon-green text-white rounded-2xl p-8 shadow-lg">
