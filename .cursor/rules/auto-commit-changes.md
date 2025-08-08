@@ -1,0 +1,179 @@
+# Auto-Commit Changes
+
+## Overview
+This rule ensures that after each change performed by Cursor, the modified files are automatically committed to Git using conventional commit conventions. This maintains a clean, traceable history of AI-generated changes.
+
+## Requirements
+
+### Automatic Commit Process
+- **Trigger**: After each change performed by Cursor
+- **Action**: Automatically commit all changed files
+- **Commit Convention**: Use conventional commit format for commit messages
+- **Message Structure**: Include what was changed and why based on the prompts used
+
+### Conventional Commit Format
+Follow the conventional commit specification:
+```
+<type>[optional scope]: <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+### Commit Types
+- **feat**: New feature or enhancement
+- **fix**: Bug fix
+- **docs**: Documentation changes
+- **style**: Code style changes (formatting, missing semicolons, etc.)
+- **refactor**: Code refactoring (no functional changes)
+- **perf**: Performance improvements
+- **test**: Adding or updating tests
+- **chore**: Maintenance tasks, dependencies, etc.
+- **ci**: CI/CD changes
+- **build**: Build system changes
+
+### Commit Message Structure
+1. **Type**: Use appropriate conventional commit type
+2. **Scope**: Optional scope in parentheses (e.g., `(components)`, `(styling)`)
+3. **Description**: Clear, concise description of changes
+4. **Body**: Explanation of what was changed and why (based on prompts)
+5. **Footer**: Optional references to issues, breaking changes, etc.
+
+## Examples
+
+### Example 1: Component Update
+```bash
+feat(components): add padding between hero section and header
+
+- Added 120px top padding to hero section to create visual separation
+- Updated padding from mb-8 to mb-16 for date display spacing
+- Improved visual hierarchy and user experience
+- Changes based on user request for better spacing
+```
+
+### Example 2: Bug Fix
+```bash
+fix(components): remove secondary headline from hero section
+
+- Removed motion.h2 element containing "Drone Soccer" text
+- Updated subheadline delay from 0.8 to 0.6 for proper animation timing
+- Updated CTA buttons delay from 1.0 to 0.8 for consistent timing
+- Simplified hero section content based on user request
+```
+
+### Example 3: Documentation Update
+```bash
+docs(rules): create auto-commit changes MDC rule
+
+- Added new rule for automatic Git commits after Cursor changes
+- Implements conventional commit format for consistent history
+- Ensures traceability of AI-generated changes
+- Improves project maintainability and collaboration
+```
+
+### Example 4: Styling Changes
+```bash
+style(components): update hero section spacing and layout
+
+- Increased padding between date display and subheadline
+- Adjusted hero section top padding for better header separation
+- Improved responsive design and visual balance
+- Enhanced user experience through better spacing
+```
+
+## Implementation Guidelines
+
+### When to Commit
+- **After each Cursor change**: Commit immediately after any AI-generated modification
+- **Include all changed files**: Don't selectively commit - include all modifications
+- **Meaningful commits**: Each commit should represent a logical unit of work
+
+### Commit Message Guidelines
+1. **Analyze the change**: Understand what was modified and why
+2. **Choose appropriate type**: Select the most fitting conventional commit type
+3. **Write clear description**: Use imperative mood ("add" not "added")
+4. **Explain the reasoning**: Include context from the prompts that generated the change
+5. **Reference user requests**: Mention if changes were based on specific user feedback
+
+### Prompt Analysis
+When generating commit messages:
+- **Review the prompt**: Understand what the user requested
+- **Identify changes**: List all files and modifications made
+- **Explain purpose**: Why were these changes necessary?
+- **Include context**: What problem did this solve?
+
+## Exceptions
+
+### When NOT to Auto-Commit
+- **Multiple related changes**: If multiple changes are part of one logical unit, combine them
+- **Experimental changes**: Don't commit temporary or experimental modifications
+- **Sensitive information**: Don't commit files with sensitive data or credentials
+- **Generated files**: Don't commit build artifacts or generated files
+
+### Manual Override
+- **Complex changes**: For complex modifications, manual commit with detailed explanation
+- **Breaking changes**: Use `BREAKING CHANGE:` footer for breaking changes
+- **Issue references**: Include issue numbers in commit messages when applicable
+
+## Enforcement
+
+### Automatic Process
+1. **Detect changes**: Monitor for file modifications after Cursor operations
+2. **Generate commit message**: Create conventional commit message based on changes
+3. **Execute commit**: Run `git add . && git commit -m "message"`
+4. **Verify success**: Ensure commit was successful before proceeding
+
+### Quality Checks
+- **Message format**: Validate conventional commit format
+- **Change description**: Ensure changes are properly explained
+- **File inclusion**: Verify all modified files are included
+- **Context accuracy**: Confirm commit message reflects actual changes
+
+## Benefits
+
+- **Clean History**: Maintains organized, conventional commit history
+- **Traceability**: Easy to track AI-generated changes and their purposes
+- **Collaboration**: Clear communication of changes to team members
+- **Automation**: Reduces manual commit overhead
+- **Consistency**: Standardized commit format across the project
+- **Documentation**: Commit messages serve as change documentation
+
+## Integration
+
+### Git Hooks
+Consider implementing Git hooks to:
+- Validate conventional commit format
+- Ensure all changes are committed
+- Prevent commits without proper messages
+
+### CI/CD Integration
+- Use commit messages for automated changelog generation
+- Trigger appropriate CI/CD pipelines based on commit types
+- Generate release notes from conventional commits
+
+## Tools and Scripts
+
+### Automated Script Example
+```bash
+#!/bin/bash
+# auto-commit.sh
+
+# Get changed files
+CHANGED_FILES=$(git diff --name-only)
+
+if [ -n "$CHANGED_FILES" ]; then
+    # Generate commit message based on changes
+    COMMIT_MSG=$(generate_commit_message "$CHANGED_FILES")
+    
+    # Commit changes
+    git add .
+    git commit -m "$COMMIT_MSG"
+    
+    echo "Changes committed: $COMMIT_MSG"
+else
+    echo "No changes to commit"
+fi
+```
+
+This rule ensures that every Cursor-generated change is properly documented and committed, maintaining a clean and traceable project history.
