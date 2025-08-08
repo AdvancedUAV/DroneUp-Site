@@ -59,7 +59,7 @@ const Header: React.FC = () => {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-9">
             {navItems.map((item) => (
               <motion.button
                 key={item.name}
