@@ -80,7 +80,7 @@ const HeroSection: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="text-lg md:text-xl text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed"
           >
-            Experience the thrill of drone soccer in our state-of-the-art competition arena. 
+            Experience the thrill of drone competition at the highest level in this competition. 
             Whether you're a seasoned pilot or just starting out, DroneUp offers an exciting, 
             safe, and competitive environment for all skill levels.
           </motion.p>

@@ -56,7 +56,7 @@ const AboutSection: React.FC = () => {
             What is <span className="text-gradient">DroneUp</span>?
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            DroneUp is Calgary's premier drone soccer competition, bringing together drone enthusiasts, 
+            DroneUp is Calgary's premier drone competition for youth, bringing together drone enthusiasts, 
             pilots, and spectators for an unparalleled competitive experience.
           </p>
         </motion.div>
