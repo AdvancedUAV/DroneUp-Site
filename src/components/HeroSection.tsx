@@ -11,7 +11,7 @@ const HeroSection: React.FC = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ paddingTop: '100px' }}>
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ paddingTop: '60px' }}>
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-electric-blue/20 via-neon-green/10 to-cyber-purple/20"></div>
       
@@ -72,22 +72,12 @@ const HeroSection: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* Secondary Headline */}
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="text-2xl md:text-3xl font-orbitron font-semibold text-deep-space mb-6"
-          >
-            Drone Soccer
-          </motion.h2>
-
           {/* Subheadline */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            className="text-lg md:text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed"
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="text-lg md:text-xl text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed"
           >
             Experience the thrill of drone soccer in our state-of-the-art competition arena. 
             Whether you're a seasoned pilot or just starting out, DroneUp offers an exciting, 
@@ -98,7 +88,7 @@ const HeroSection: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
             className="flex flex-col sm:flex-row gap-6 justify-center items-center"
           >
             <motion.button
