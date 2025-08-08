@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 
 const Footer: React.FC = () => {
-  const currentYear = new Date().getFullYear();
+  //const currentYear = new Date().getFullYear();
 
   const quickLinks = [
     { name: 'About', href: '#about' },
@@ -110,59 +110,7 @@ const Footer: React.FC = () => {
               </div>
             </div>
           </motion.div>
-
-          {/* Newsletter */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="lg:col-span-1"
-          >
-            <h3 className="text-xl font-orbitron font-semibold mb-6">Stay Updated</h3>
-            <p className="text-gray-300 mb-4">
-              Subscribe to our newsletter for the latest updates and announcements.
-            </p>
-            <div className="flex">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-2 bg-white/10 border border-white/20 rounded-l-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-electric-blue"
-              />
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-4 py-2 bg-gradient-to-r from-electric-blue to-neon-green text-white rounded-r-lg font-medium"
-              >
-                Subscribe
-              </motion.button>
-            </div>
-          </motion.div>
         </div>
-
-        {/* Bottom Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="border-t border-white/20 mt-12 pt-8"
-        >
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-300 text-sm">
-              © {currentYear} DroneUp. All rights reserved.
-            </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" className="text-gray-300 hover:text-electric-blue text-sm transition-colors duration-300">
-                Privacy Policy
-              </a>
-              <a href="#" className="text-gray-300 hover:text-electric-blue text-sm transition-colors duration-300">
-                Terms of Service
-              </a>
-              <a href="#" className="text-gray-300 hover:text-electric-blue text-sm transition-colors duration-300">
-                Safety Guidelines
-              </a>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </footer>
   );

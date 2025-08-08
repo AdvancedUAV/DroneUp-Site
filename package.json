@@ -1,7 +1,7 @@
 {
   "name": "droneup-website",
   "version": "1.0.0",
-  "description": "Calgary's Premier Youth Drone Competition - DroneUp Website",
+  "description": "",
   "type": "module",
   "scripts": {
     "dev": "vite",

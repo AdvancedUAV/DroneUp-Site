@@ -66,7 +66,7 @@ const HeroSection: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="mb-16"
           >
-            <div className="inline-block bg-gradient-to-r from-electric-blue to-neon-green text-white px-8 py-4 rounded-full shadow-lg">
+            <div className="inline-block bg-gradient-to-r from-electric-blue to-neon-green text-white px-6 py-4 rounded-full shadow-lg">
               <span className="text-2xl md:text-3xl font-orbitron font-bold">
                 [DD, MM, 2026]
               </span>
