@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
 import AboutSection from './components/AboutSection';
@@ -9,14 +9,19 @@ import RegistrationSection from './components/RegistrationSection';
 import Footer from './components/Footer';
 
 const App: React.FC = () => {
+  const [competitionType, setCompetitionType] = useState<'drone-soccer' | 'autonomous'>('drone-soccer');
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
       <main>
         <HeroSection />
         <AboutSection />
-        <CompetitionSection />
-        <ScheduleSection />
+        <CompetitionSection 
+          competitionType={competitionType}
+          setCompetitionType={setCompetitionType}
+        />
+        <ScheduleSection competitionType={competitionType} />
         <GallerySection />
         <RegistrationSection />
       </main>

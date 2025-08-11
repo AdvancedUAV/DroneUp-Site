@@ -2,69 +2,24 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaUsers, FaClock, FaTrophy, FaShieldAlt, FaCog, FaBalanceScale, FaBatteryFull } from 'react-icons/fa';
+import { droneSoccerData, autonomousChallengeData, CompetitionData } from '../data/competitionData';
 
-const CompetitionSection: React.FC = () => {
+interface CompetitionSectionProps {
+  competitionType: 'drone-soccer' | 'autonomous';
+  setCompetitionType: (type: 'drone-soccer' | 'autonomous') => void;
+}
+
+const CompetitionSection: React.FC<CompetitionSectionProps> = ({ competitionType, setCompetitionType }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
-  const formatDetails = [
-    {
-      icon: FaUsers,
-      title: 'Team Size',
-      value: '3-4 players per team',
-      color: 'from-electric-blue to-cyan-400',
-    },
-    {
-      icon: FaClock,
-      title: 'Match Duration',
-      value: '3 minutes per game',
-      color: 'from-neon-green to-emerald-400',
-    },
-    {
-      icon: FaTrophy,
-      title: 'Tournament Structure',
-      value: 'Seeding matches followed by double-elimination rounds',
-      color: 'from-cyber-purple to-purple-400',
-    },
-    {
-      icon: FaShieldAlt,
-      title: 'Event Type',
-      value: 'One-time competition',
-      color: 'from-hot-pink to-pink-400',
-    },
-  ];
+  const currentData: CompetitionData = competitionType === 'drone-soccer' ? droneSoccerData : autonomousChallengeData;
 
-  const rules = [
-    'Safety First: All participants must complete safety training',
-    'Equipment Standards: Drones must meet competition specifications',
-    'Fair Play: Sportsmanship and respect for all participants',
-    'Scoring System: Goals, assists, and technical skills evaluated',
-  ];
-
-  const equipmentSpecs = [
-    {
-      icon: FaCog,
-      title: 'Drone Type',
-      value: 'Quadcopter with protective cage (20cm diameter)',
-    },
-    {
-      icon: FaBalanceScale,
-      title: 'Weight',
-      value: 'Maximum 500g',
-    },
-    {
-      icon: FaBatteryFull,
-      title: 'Battery',
-      value: '3S LiPo, 1500mAh maximum',
-    },
-    {
-      icon: FaShieldAlt,
-      title: 'Safety Features',
-      value: 'Propeller guards, emergency stop',
-    },
-  ];
+  const formatDetails = currentData.formatDetails;
+  const rules = currentData.rules;
+  const equipmentSpecs = currentData.equipmentSpecs;
 
   return (
     <section id="competition" className="section-padding bg-deep-space text-white">
@@ -79,9 +34,33 @@ const CompetitionSection: React.FC = () => {
           <h2 className="text-4xl md:text-5xl font-orbitron font-bold mb-6">
             Competition <span className="text-gradient">Details</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
             Everything you need to know about the DroneUp competition format, rules, and equipment.
           </p>
+
+          {/* Competition Type Toggle Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+            <button
+              onClick={() => setCompetitionType('drone-soccer')}
+              className={`px-8 py-4 rounded-xl font-orbitron font-semibold text-lg transition-all duration-300 transform hover:scale-105 ${
+                competitionType === 'drone-soccer'
+                  ? 'bg-gradient-to-r from-electric-blue to-neon-green text-white shadow-lg'
+                  : 'bg-white/10 text-gray-300 hover:bg-white/20 border-2 border-transparent hover:border-electric-blue'
+              }`}
+            >
+              Drone Soccer (Piloted)
+            </button>
+            <button
+              onClick={() => setCompetitionType('autonomous')}
+              className={`px-8 py-4 rounded-xl font-orbitron font-semibold text-lg transition-all duration-300 transform hover:scale-105 ${
+                competitionType === 'autonomous'
+                  ? 'bg-gradient-to-r from-electric-blue to-neon-green text-white shadow-lg'
+                  : 'bg-white/10 text-gray-300 hover:bg-white/20 border-2 border-transparent hover:border-electric-blue'
+              }`}
+            >
+              Autonomous Challenge (Coding)
+            </button>
+          </div>
         </motion.div>
 
         {/* Format Details */}
@@ -174,10 +153,10 @@ const CompetitionSection: React.FC = () => {
           className="bg-gradient-to-r from-electric-blue to-neon-green rounded-2xl p-8 text-center"
         >
           <h3 className="text-2xl font-orbitron font-semibold mb-4">
-            All Equipment Provided
+            {competitionType === 'drone-soccer' ? 'All Equipment Provided' : 'Development Environment Provided'}
           </h3>
           <p className="text-lg">
-            All equipment will be provided by DroneUp (drones, controllers, batteries, etc.)
+            'All equipment will be provided by DroneUp (drones, controllers, batteries, etc.)'
           </p>
         </motion.div>
       </div>

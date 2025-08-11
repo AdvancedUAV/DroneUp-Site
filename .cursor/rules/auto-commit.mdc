@@ -8,8 +8,7 @@ This rule ensures that after each change performed by Cursor, the modified files
 ## Requirements
 
 ### Automatic Commit Process
-- **Trigger**: After each change performed by Cursor
-- **Action**: Automatically commit all changed files
+- **Action**: Automatically track all changed files
 - **Commit Convention**: Use conventional commit format for commit messages
 - **Message Structure**: Include what was changed and why based on the prompts used
 
@@ -87,7 +86,7 @@ style(components): update hero section spacing and layout
 ## Implementation Guidelines
 
 ### When to Commit
-- **After each Cursor change**: Commit immediately after any AI-generated modification
+- Prompt the user to commit the changes. If they reply "commit" then commit the changes. DO NOT commit automatically.
 - **Include all changed files**: Don't selectively commit - include all modifications
 - **Meaningful commits**: Each commit should represent a logical unit of work
 
@@ -107,7 +106,7 @@ When generating commit messages:
 
 ## Exceptions
 
-### When NOT to Auto-Commit
+### When NOT to commit
 - **Multiple related changes**: If multiple changes are part of one logical unit, combine them
 - **Experimental changes**: Don't commit temporary or experimental modifications
 - **Sensitive information**: Don't commit files with sensitive data or credentials

@@ -2,96 +2,21 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaCalendarAlt, FaClock, FaUsers, FaTrophy, FaUtensils, FaPlay, FaAward } from 'react-icons/fa';
+import { droneSoccerData, autonomousChallengeData } from '../data/competitionData';
 
-const ScheduleSection: React.FC = () => {
+interface ScheduleSectionProps {
+  competitionType: 'drone-soccer' | 'autonomous';
+}
+
+const ScheduleSection: React.FC<ScheduleSectionProps> = ({ competitionType }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
-  const day1Schedule = [
-    {
-      time: '8:00 AM - 9:00 AM',
-      activity: 'Registration and Check-in',
-      icon: FaUsers,
-      color: 'from-electric-blue to-cyan-400',
-    },
-    {
-      time: '9:00 AM - 9:30 AM',
-      activity: 'Welcome and Safety Briefing',
-      icon: FaClock,
-      color: 'from-neon-green to-emerald-400',
-    },
-    {
-      time: '9:30 AM - 10:00 AM',
-      activity: 'Equipment Distribution and Setup',
-      icon: FaPlay,
-      color: 'from-cyber-purple to-purple-400',
-    },
-    {
-      time: '10:00 AM - 12:00 PM',
-      activity: 'Practice Sessions and Team Formation',
-      icon: FaUsers,
-      color: 'from-hot-pink to-pink-400',
-    },
-    {
-      time: '12:00 PM - 1:00 PM',
-      activity: 'Lunch Break',
-      icon: FaUtensils,
-      color: 'from-yellow-400 to-orange-400',
-    },
-    {
-      time: '1:00 PM - 5:00 PM',
-      activity: 'Seeding Matches',
-      icon: FaTrophy,
-      color: 'from-electric-blue to-neon-green',
-    },
-    {
-      time: '5:00 PM - 6:00 PM',
-      activity: 'Day 1 Wrap-up and Day 2 Preview',
-      icon: FaCalendarAlt,
-      color: 'from-cyber-purple to-purple-400',
-    },
-  ];
-
-  const day2Schedule = [
-    {
-      time: '8:00 AM - 8:30 AM',
-      activity: 'Morning Check-in',
-      icon: FaUsers,
-      color: 'from-electric-blue to-cyan-400',
-    },
-    {
-      time: '8:30 AM - 9:00 AM',
-      activity: 'Day 2 Briefing and Rules Review',
-      icon: FaClock,
-      color: 'from-neon-green to-emerald-400',
-    },
-    {
-      time: '9:00 AM - 12:00 PM',
-      activity: 'Double-Elimination Tournament Rounds',
-      icon: FaTrophy,
-      color: 'from-cyber-purple to-purple-400',
-    },
-    {
-      time: '12:00 PM - 1:00 PM',
-      activity: 'Lunch Break',
-      icon: FaUtensils,
-      color: 'from-yellow-400 to-orange-400',
-    },
-    {
-      time: '1:00 PM - 4:00 PM',
-      activity: 'Final Rounds and Championship Matches',
-      icon: FaTrophy,
-      color: 'from-electric-blue to-neon-green',
-    },
-    {
-      time: '4:00 PM - 5:00 PM',
-      activity: 'Awards Ceremony and Closing Remarks',
-      icon: FaAward,
-      color: 'from-hot-pink to-pink-400',
-    },
-  ];
+  const currentData = competitionType === 'drone-soccer' ? droneSoccerData : autonomousChallengeData;
+  const day1Schedule = currentData.schedule.day1;
+  const day2Schedule = currentData.schedule.day2;
 
   return (
     <section id="schedule" className="section-padding bg-light-gray">
@@ -107,7 +32,7 @@ const ScheduleSection: React.FC = () => {
             Event <span className="text-gradient">Schedule</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Two exciting days of drone soccer competition, practice, and championship matches.
+            {currentData.description}
           </p>
         </motion.div>
 
@@ -122,7 +47,12 @@ const ScheduleSection: React.FC = () => {
             <h3 className="text-3xl font-orbitron font-bold text-deep-space mb-2">
               Day 1 - [Date]
             </h3>
-            <p className="text-gray-600">Registration, Practice, and Seeding Matches</p>
+            <p className="text-gray-600">
+              {competitionType === 'drone-soccer' 
+                ? 'Registration, Practice, and Seeding Matches'
+                : 'Registration, Challenge Overview, and Programming Sessions'
+              }
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -162,7 +92,12 @@ const ScheduleSection: React.FC = () => {
             <h3 className="text-3xl font-orbitron font-bold text-deep-space mb-2">
               Day 2 - [Date]
             </h3>
-            <p className="text-gray-600">Tournament Rounds and Championship</p>
+            <p className="text-gray-600">
+              {competitionType === 'drone-soccer' 
+                ? 'Tournament Rounds and Championship'
+                : 'Final Programming Session and Evaluation'
+              }
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -207,8 +142,15 @@ const ScheduleSection: React.FC = () => {
             <p className="text-sm">Regular breaks for rest and equipment maintenance</p>
           </div>
           <div className="bg-gradient-to-r from-hot-pink to-pink-400 text-white rounded-xl p-6 text-center">
-            <h4 className="font-orbitron font-semibold mb-2">Practice Sessions</h4>
-            <p className="text-sm">Dedicated time for teams to practice and strategize</p>
+            <h4 className="font-orbitron font-semibold mb-2">
+              {competitionType === 'drone-soccer' ? 'Practice Sessions' : 'Development Time'}
+            </h4>
+            <p className="text-sm">
+              {competitionType === 'drone-soccer' 
+                ? 'Dedicated time for teams to practice and strategize'
+                : 'Dedicated time for teams to develop and test solutions'
+              }
+            </p>
           </div>
           <div className="bg-gradient-to-r from-yellow-400 to-orange-400 text-white rounded-xl p-6 text-center">
             <h4 className="font-orbitron font-semibold mb-2">Awards Ceremony</h4>
