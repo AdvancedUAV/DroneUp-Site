@@ -6,10 +6,6 @@ on:
 
   workflow_dispatch:
 
-# Allow one concurrent deployment
-concurrency:
-  cancel-in-progress: true
-
 jobs:
   # Single deploy job since we're just deploying
   deploy:
