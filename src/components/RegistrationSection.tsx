@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FaUser, FaEnvelope, FaPhone, FaCalendar, FaShieldAlt, FaQuestionCircle } from 'react-icons/fa';
+import { FaEnvelope, FaShieldAlt, FaQuestionCircle } from 'react-icons/fa';
 
 const RegistrationSection: React.FC = () => {
   const [ref, inView] = useInView({
@@ -9,28 +9,7 @@ const RegistrationSection: React.FC = () => {
     threshold: 0.1,
   });
 
-  const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
-    dateOfBirth: '',
-    experienceLevel: '',
-    teamPreference: '',
-    teamMembers: '',
-  });
-
   const [activeFAQ, setActiveFAQ] = useState<number | null>(null);
-
-  const experienceLevels = [
-    { value: 'beginner', label: 'Beginner (0-1 years)' },
-    { value: 'intermediate', label: 'Intermediate (1-3 years)' },
-    { value: 'advanced', label: 'Advanced (3+ years)' },
-  ];
-
-  const teamPreferences = [
-    { value: 'individual', label: 'Individual registration' },
-    { value: 'team', label: 'Team registration' },
-  ];
 
   const faqData = [
     {
@@ -75,20 +54,6 @@ const RegistrationSection: React.FC = () => {
     },
   ];
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-  };
-
   return (
     <section id="register" className="section-padding bg-gradient-to-br from-electric-blue/10 to-neon-green/10">
       <div className="container-custom">
@@ -108,7 +73,7 @@ const RegistrationSection: React.FC = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Registration Form */}
+          {/* Google Form Embed */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -118,143 +83,15 @@ const RegistrationSection: React.FC = () => {
             <h3 className="text-2xl font-orbitron font-semibold text-deep-space mb-6">
               Registration Form
             </h3>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Full Name *
-                </label>
-                <div className="relative">
-                  <FaUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                  <input
-                    type="text"
-                    name="fullName"
-                    value={formData.fullName}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-electric-blue focus:border-transparent"
-                    placeholder="Enter your full name"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Email Address *
-                </label>
-                <div className="relative">
-                  <FaEnvelope className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-electric-blue focus:border-transparent"
-                    placeholder="Enter your email address"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Phone Number *
-                </label>
-                <div className="relative">
-                  <FaPhone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-electric-blue focus:border-transparent"
-                    placeholder="Enter your phone number"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Date of Birth *
-                </label>
-                <div className="relative">
-                  <FaCalendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                  <input
-                    type="date"
-                    name="dateOfBirth"
-                    value={formData.dateOfBirth}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-electric-blue focus:border-transparent"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Experience Level *
-                </label>
-                <select
-                  name="experienceLevel"
-                  value={formData.experienceLevel}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-electric-blue focus:border-transparent"
-                >
-                  <option value="">Select your experience level</option>
-                  {experienceLevels.map((level) => (
-                    <option key={level.value} value={level.value}>
-                      {level.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Team Preference *
-                </label>
-                <select
-                  name="teamPreference"
-                  value={formData.teamPreference}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-electric-blue focus:border-transparent"
-                >
-                  <option value="">Select team preference</option>
-                  {teamPreferences.map((pref) => (
-                    <option key={pref.value} value={pref.value}>
-                      {pref.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              {formData.teamPreference === 'team' && (
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Team Members
-                  </label>
-                  <textarea
-                    name="teamMembers"
-                    value={formData.teamMembers}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-electric-blue focus:border-transparent"
-                    placeholder="List the names of other team members (if applicable)"
-                    rows={3}
-                  />
-                </div>
-              )}
-
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                type="submit"
-                className="w-full btn-primary text-lg py-4"
+            <div className="w-full">
+              <iframe 
+                src="https://docs.google.com/forms/d/e/1FAIpQLSdTWEVhW6KkdKhXVT2L59AhGkLf8S9GrVqEhhKZPMp1ZVZt7Q/viewform?embedded=true" 
+                className="w-full h-[600px] md:h-[700px] lg:h-[600px] xl:h-[700px] rounded-lg border-0"
+                title="DroneUp Competition Registration Form"
               >
-                Register Now
-              </motion.button>
-            </form>
+                Loading…
+              </iframe>
+            </div>
           </motion.div>
 
           {/* FAQ Section */}

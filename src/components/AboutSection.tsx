@@ -73,9 +73,9 @@ const AboutSection: React.FC = () => {
               What is Drone Soccer?
             </h3>
             <p className="text-lg text-gray-600 leading-relaxed">
-              Drone soccer combines the precision of drone piloting with the strategy and excitement 
+              Drone soccer combines the precision of drone piloting in three dimensions with the strategy and excitement 
               of traditional soccer. Teams compete using specially designed drones to score goals 
-              in a controlled indoor arena.
+              in a controlled netted arena.
             </p>
           </div>
         </motion.div>
