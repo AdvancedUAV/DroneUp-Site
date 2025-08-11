@@ -157,7 +157,7 @@ const CompetitionSection: React.FC<CompetitionSectionProps> = ({ competitionType
             {competitionType === 'drone-soccer' ? 'All Equipment Provided' : 'Development Environment Provided'}
           </h3>
           <p className="text-lg">
-            'All equipment will be provided by DroneUp (drones, controllers, batteries, etc.)'
+            All equipment will be provided by DroneUp (drones, controllers, batteries, etc.)
           </p>
         </motion.div>
       </div>
