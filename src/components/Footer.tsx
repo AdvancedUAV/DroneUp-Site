@@ -5,15 +5,6 @@ import { FaFacebook, FaInstagram, FaTwitter, FaYoutube, FaEnvelope, FaPhone, FaM
 const Footer: React.FC = () => {
   //const currentYear = new Date().getFullYear();
 
-  const quickLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Competition', href: '#competition' },
-    { name: 'Schedule', href: '#schedule' },
-    { name: 'Gallery', href: '#gallery' },
-    { name: 'Register', href: '#register' },
-    { name: 'Contact', href: '#contact' },
-  ];
-
   const socialLinks = [
     { name: 'Facebook', icon: FaFacebook, href: '#', color: 'hover:text-blue-600' },
     { name: 'Instagram', icon: FaInstagram, href: '#', color: 'hover:text-pink-600' },
@@ -21,23 +12,16 @@ const Footer: React.FC = () => {
     { name: 'YouTube', icon: FaYoutube, href: '#', color: 'hover:text-red-600' },
   ];
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <footer className="bg-deep-space text-white">
       <div className="container-custom py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="flex flex-col md:flex-row justify-between gap-8">
           {/* Brand Section */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="lg:col-span-1"
+            className="md:w-1/2"
           >
             <div className="flex items-center space-x-2 mb-6">
               <div className="w-10 h-10 bg-gradient-to-r from-electric-blue to-neon-green rounded-lg flex items-center justify-center">
@@ -65,46 +49,24 @@ const Footer: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* Quick Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="lg:col-span-1"
-          >
-            <h3 className="text-xl font-orbitron font-semibold mb-6">Quick Links</h3>
-            <ul className="space-y-3">
-              {quickLinks.map((link) => (
-                <li key={link.name}>
-                  <button
-                    onClick={() => scrollToSection(link.href)}
-                    className="text-gray-300 hover:text-electric-blue transition-colors duration-300"
-                  >
-                    {link.name}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="lg:col-span-1"
+            className="md:w-1/2 md:text-right"
           >
             <h3 className="text-xl font-orbitron font-semibold mb-6">Contact Info</h3>
             <div className="space-y-4">
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center justify-end space-x-3">
                 <FaEnvelope className="text-electric-blue" />
                 <span className="text-gray-300">info@droneup.com</span>
               </div>
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center justify-end space-x-3">
                 <FaPhone className="text-electric-blue" />
                 <span className="text-gray-300">(555) 123-4567</span>
               </div>
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center justify-end space-x-3">
                 <FaMapMarkerAlt className="text-electric-blue" />
                 <span className="text-gray-300">123 Drone Arena Way, Tech City, TC 12345</span>
               </div>
