@@ -86,7 +86,7 @@ const RegistrationSection: React.FC = () => {
             <div className="w-full">
               <iframe 
                 src="https://docs.google.com/forms/d/e/1FAIpQLSdTWEVhW6KkdKhXVT2L59AhGkLf8S9GrVqEhhKZPMp1ZVZt7Q/viewform?embedded=true" 
-                className="w-full h-[600px] md:h-[700px] lg:h-[600px] xl:h-[700px] rounded-lg border-0"
+                className="w-full h-[500px] md:h-[600px] lg:h-[800px] xl:h-[900px] rounded-lg border-0"
                 title="DroneUp Competition Registration Form"
               >
                 Loading…
