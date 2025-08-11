@@ -36,6 +36,5 @@ jobs:
 
       - name: Copy build to branch
         run: |
-          git rm -rf .
           git checkout main -- dist/*
           git commit -m "Vite build"
