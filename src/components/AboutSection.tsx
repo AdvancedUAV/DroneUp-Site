@@ -57,7 +57,7 @@ const AboutSection: React.FC = () => {
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             DroneUp is Calgary's premier drone competition for youth, bringing together drone enthusiasts, 
-            pilots, and spectators for an unparalleled competitive experience.
+            pilots, and spectators for an unparalleled competitive experience. We are hosting two competition categories: Drone Soccer and Autonomous Programming.
           </p>
         </motion.div>
 
