@@ -58,15 +58,15 @@ const Footer: React.FC = () => {
           >
             <h3 className="text-xl font-orbitron font-semibold mb-6">Contact Info</h3>
             <div className="space-y-4">
-              <div className="flex items-center justify-end space-x-3">
+              <div className="flex items-center md:justify-end space-x-3">
                 <FaEnvelope className="text-electric-blue" />
                 <span className="text-gray-300">info@droneup.com</span>
               </div>
-              <div className="flex items-center justify-end space-x-3">
+              <div className="flex items-center md:justify-end space-x-3">
                 <FaPhone className="text-electric-blue" />
                 <span className="text-gray-300">(555) 123-4567</span>
               </div>
-              <div className="flex items-center justify-end space-x-3">
+              <div className="flex items-center md:justify-end space-x-3">
                 <FaMapMarkerAlt className="text-electric-blue" />
                 <span className="text-gray-300">123 Drone Arena Way, Tech City, TC 12345</span>
               </div>
