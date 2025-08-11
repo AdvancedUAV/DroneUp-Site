@@ -69,13 +69,11 @@ const AboutSection: React.FC = () => {
           className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16"
         >
           <div className="max-w-4xl mx-auto text-center">
-            <h3 className="text-2xl md:text-3xl font-orbitron font-semibold text-deep-space mb-6">
+            {/* <h3 className="text-2xl md:text-3xl font-orbitron font-semibold text-deep-space mb-6">
               What is Drone Soccer?
-            </h3>
+            </h3> */}
             <p className="text-lg text-gray-600 leading-relaxed">
-              Drone soccer combines the precision of drone piloting in three dimensions with the strategy and excitement 
-              of traditional soccer. Teams compete using specially designed drones to score goals 
-              in a controlled netted arena.
+            Calgary’s newest design challenge, where anyone can learn to 
             </p>
           </div>
         </motion.div>
