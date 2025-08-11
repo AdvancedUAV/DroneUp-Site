@@ -29,12 +29,21 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Copy build to branch
+        run: |
+          cp -r dist/ ..
+
       - name: Checkout dist branch
         uses: actions/checkout@v5
         with:
           ref: 'dist'
 
-      - name: Copy build to branch
+      - name: Move build files
         run: |
-          git checkout main -- dist/*
-          git commit -m "Vite build"
+          cp -r -f ../dist/* .
+
+      - name: Create Commit and Push
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+          commit_message: 'Update vite build'
