@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
               </span>
             </div>
             <p className="text-gray-300 mb-6">
-              Calgary's premier youth drone soccer competition. Experience the future of competitive sports.
+              Calgary's premier youth drone competition. Experience the future of competitive sports.
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social) => (
