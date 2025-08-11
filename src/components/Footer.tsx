@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaFacebook, FaInstagram, FaTwitter, FaYoutube, FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaTwitter, FaYoutube, FaEnvelope, FaMapMarkerAlt, FaLinkedin } from 'react-icons/fa';
 
 const Footer: React.FC = () => {
   //const currentYear = new Date().getFullYear();
