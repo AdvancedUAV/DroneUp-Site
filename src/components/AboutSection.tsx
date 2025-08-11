@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaShieldAlt, FaUsers, FaRocket, FaTrophy } from 'react-icons/fa';
@@ -8,6 +8,46 @@ const AboutSection: React.FC = () => {
     triggerOnce: true,
     threshold: 0.1,
   });
+
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [currentText, setCurrentText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  const words = ['Tinker', 'Build', 'Create', 'Innovate', 'Learn'];
+
+  useEffect(() => {
+    if (!inView) return;
+
+    const currentWord = words[currentWordIndex];
+    
+    if (isDeleting) {
+      // Delete effect
+      if (currentText.length > 0) {
+        const timeout = setTimeout(() => {
+          setCurrentText(currentText.slice(0, -1));
+        }, 100);
+        return () => clearTimeout(timeout);
+      } else {
+        // Move to next word
+        setIsDeleting(false);
+        setCurrentWordIndex((prev) => (prev + 1) % words.length);
+      }
+    } else {
+      // Type effect
+      if (currentText.length < currentWord.length) {
+        const timeout = setTimeout(() => {
+          setCurrentText(currentWord.slice(0, currentText.length + 1));
+        }, 150);
+        return () => clearTimeout(timeout);
+      } else {
+        // Wait before starting to delete
+        const timeout = setTimeout(() => {
+          setIsDeleting(true);
+        }, 2000);
+        return () => clearTimeout(timeout);
+      }
+    }
+  }, [currentText, currentWordIndex, isDeleting, inView, words]);
 
   const features = [
     {
@@ -69,11 +109,12 @@ const AboutSection: React.FC = () => {
           className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16"
         >
           <div className="max-w-4xl mx-auto text-center">
-            {/* <h3 className="text-2xl md:text-3xl font-orbitron font-semibold text-deep-space mb-6">
-              What is Drone Soccer?
-            </h3> */}
             <p className="text-lg text-gray-600 leading-relaxed">
-            Calgary’s newest design challenge, where anyone can learn to 
+              Calgary's newest design challenge, where anyone can learn to{' '}
+              <span className="text-electric-blue font-semibold">
+                {currentText}
+                <span className="animate-pulse">|</span>
+              </span>
             </p>
           </div>
         </motion.div>
