@@ -11,23 +11,8 @@ interface Sponsor {
 const sponsorsData: Sponsor[] = [
   {
     name: 'AUAV',
-    imageUrl: 'https://auav.ca/wp-content/uploads/2024/12/A.png',
+    imageUrl: 'https://media.licdn.com/dms/image/v2/D563DAQE0NJ13tDXEug/image-scale_191_1128/B56ZWsRU6lHoAg-/0/1742351978723/auav_tech_inc_cover?e=2147483647&v=beta&t=3ODUsrUwaQf9GNgvubtqiStAJJBMcgNEwDLl_CLbcYU',
     website: 'https://auav.ca/'
-  },
-  {
-    name: 'AeroTech Solutions',
-    imageUrl: 'https://via.placeholder.com/200x100/10B981/FFFFFF?text=AeroTech',
-    website: 'https://aerotechsolutions.com'
-  },
-  {
-    name: 'SkyRacing League',
-    imageUrl: 'https://via.placeholder.com/200x100/8B5CF6/FFFFFF?text=SkyRacing',
-    website: 'https://skyracingleague.com'
-  },
-  {
-    name: 'DroneChampions',
-    imageUrl: 'https://via.placeholder.com/200x100/F59E0B/FFFFFF?text=Champions',
-    website: 'https://dronechampions.com'
   },
 ];
 
@@ -73,11 +58,11 @@ const SponsorsSection: React.FC<SponsorsSectionProps> = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4 mt-10">
             Our Sponsors
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            We're grateful for the support of these amazing organizations that make our drone competitions possible.
+            We're grateful for the support of these amazing organizations. Click on any logo to visit their website.
           </p>
         </motion.div>
 
@@ -86,7 +71,7 @@ const SponsorsSection: React.FC<SponsorsSectionProps> = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="flex flex-wrap justify-center items-center gap-12"
         >
           {sponsorsData.map((sponsor, index) => (
             <motion.div
@@ -95,28 +80,15 @@ const SponsorsSection: React.FC<SponsorsSectionProps> = () => {
               className="group"
             >
               <div
-                className={`bg-white rounded-lg shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer ${
-                  sponsor.website ? 'hover:bg-blue-50' : ''
-                }`}
+                className="transition-all duration-300 hover:scale-110 cursor-pointer"
                 onClick={() => handleSponsorClick(sponsor)}
+                title={`Visit ${sponsor.name} website`}
               >
-                <div className="aspect-w-2 aspect-h-1 mb-4">
-                  <img
-                    src={sponsor.imageUrl}
-                    alt={`${sponsor.name} logo`}
-                    className="w-full h-24 object-contain rounded-md"
-                  />
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900 text-center group-hover:text-blue-600 transition-colors duration-300">
-                  {sponsor.name}
-                </h3>
-                {sponsor.website && (
-                  <div className="mt-2 text-center">
-                    <span className="text-sm text-blue-500 group-hover:text-blue-700 transition-colors duration-300">
-                      Click to visit website
-                    </span>
-                  </div>
-                )}
+                <img
+                  src={sponsor.imageUrl}
+                  alt={`${sponsor.name} logo`}
+                  className="h-20 w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                />
               </div>
             </motion.div>
           ))}
@@ -132,9 +104,12 @@ const SponsorsSection: React.FC<SponsorsSectionProps> = () => {
           <p className="text-gray-600 mb-6">
             Interested in becoming a sponsor?
           </p>
-          <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+          <a 
+            href="mailto:info@auav.ca"
+            className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl mb-9"
+          >
             Contact Us
-          </button>
+          </a>
         </motion.div>
       </div>
     </section>
