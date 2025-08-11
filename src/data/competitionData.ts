@@ -1,4 +1,4 @@
-import { FaUsers, FaHelicopter, FaClock, FaTrophy, FaShieldAlt, FaCog, FaBalanceScale, FaBatteryFull, FaCode, FaRobot, FaLaptop, FaBrain } from 'react-icons/fa';
+import { FaUsers, FaHelicopter, FaClock, FaTrophy, FaShieldAlt, FaCog, FaBalanceScale, FaBatteryFull, FaCode, FaRobot, FaLaptop } from 'react-icons/fa';
 
 export interface CompetitionData {
   formatDetails: Array<{

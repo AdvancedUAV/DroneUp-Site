@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+// @ts-ignore
 import { FaCalendarAlt, FaClock, FaUsers, FaTrophy, FaUtensils, FaPlay, FaAward } from 'react-icons/fa';
 import { droneSoccerData, autonomousChallengeData } from '../data/competitionData';
 

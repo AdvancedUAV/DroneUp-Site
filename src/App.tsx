@@ -6,7 +6,9 @@ import CompetitionSection from './components/CompetitionSection';
 import ScheduleSection from './components/ScheduleSection';
 import GallerySection from './components/GallerySection';
 import RegistrationSection from './components/RegistrationSection';
+import SponsorsSection from './components/SponsorsSection';
 import Footer from './components/Footer';
+
 
 const App: React.FC = () => {
   const [competitionType, setCompetitionType] = useState<'drone-soccer' | 'autonomous'>('drone-soccer');
@@ -24,6 +26,7 @@ const App: React.FC = () => {
         <ScheduleSection competitionType={competitionType} />
         <GallerySection />
         <RegistrationSection />
+        <SponsorsSection />
       </main>
       <Footer />
     </div>

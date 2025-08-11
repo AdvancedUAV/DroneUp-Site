@@ -8,6 +8,7 @@ This rule ensures that after each change performed by Cursor, the modified files
 ## Requirements
 
 ### Automatic Commit Process
+- **Trigger**: After each change performed by Cursor, first check if the build still works and fix any bugs
 - **Action**: Automatically track all changed files
 - **Commit Convention**: Use conventional commit format for commit messages
 - **Message Structure**: Include what was changed and why based on the prompts used
