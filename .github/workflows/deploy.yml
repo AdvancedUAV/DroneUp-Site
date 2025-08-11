@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
@@ -29,9 +29,13 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Checkout dist branch
+        uses: actions/checkout@v5
+        with:
+          ref: 'dist'
+
       - name: Copy build to branch
         run: |
-          git checkout dist
           git rm -rf .
           git checkout main -- dist/*
           git commit -m "Vite build"
