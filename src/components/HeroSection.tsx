@@ -103,9 +103,15 @@ const HeroSection: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => {
+                const navbarHeight = 60;
                 const registerSection = document.querySelector('#register');
                 if (registerSection) {
-                  registerSection.scrollIntoView({ behavior: 'smooth' });
+                  const elementPosition = registerSection.getBoundingClientRect().top + window.pageYOffset;
+                  const offsetPosition = elementPosition - navbarHeight - 20; // Additional 20px buffer
+                  window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                  });
                 }
               }}
               className="btn-primary text-lg px-10 py-4"
