@@ -6,7 +6,14 @@ const HeroSection: React.FC = () => {
   const scrollToNext = () => {
     const aboutSection = document.querySelector('#about');
     if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' });
+      const navbarHeight = 60; // Approximate navbar height in pixels
+      const elementPosition = aboutSection.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - navbarHeight - 20; // Additional 20px buffer
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
   };
 
@@ -80,9 +87,9 @@ const HeroSection: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="text-lg md:text-xl text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed"
           >
-            Experience the thrill of drone competition at the highest level in this competition. 
+            Experience the thrill of drone competition at the highest level.<br></br> 
             Whether you're a seasoned pilot or just starting out, DroneUp offers an exciting, 
-            safe, and competitive environment for all skill levels.
+            safe, and competitive environment for all skill ranges.
           </motion.p>
 
           {/* CTA Buttons */}

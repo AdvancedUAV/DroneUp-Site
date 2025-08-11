@@ -22,16 +22,24 @@ const Header: React.FC = () => {
     // { name: 'Schedule', href: '#schedule' },
     { name: 'Gallery', href: '#gallery' },
     // { name: 'Register', href: '#register' },
-    { name: 'Contact', href: '#contact' },
+    // { name: 'Contact', href: '#contact' },
   ];
 
   const scrollToSection = (href: string) => {
+    const navbarHeight = 60;
     const element = document.querySelector(href);
+
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - navbarHeight - 20; // Additional 20px buffer
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
     setIsMenuOpen(false);
   };
+
 
   return (
     <motion.header

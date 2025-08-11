@@ -1,4 +1,6 @@
-# Auto-Commit Changes
+---
+alwaysApply: true
+---
 
 ## Overview
 This rule ensures that after each change performed by Cursor, the modified files are automatically committed to Git using conventional commit conventions. This maintains a clean, traceable history of AI-generated changes.

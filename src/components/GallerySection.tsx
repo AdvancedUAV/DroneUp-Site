@@ -10,54 +10,60 @@ const GallerySection: React.FC = () => {
   });
 
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
 
   // Sample gallery items - in a real app, these would come from a CMS or API
   const galleryItems = [
     {
       id: 1,
       type: 'image',
-      src: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop',
-      alt: 'Drone soccer action shot',
+      src: 'https://auav.ca/wp-content/uploads/2025/07/R62_7224-DP3-1024x683.jpg',
+      alt: '',
       category: 'Action Shots',
     },
     {
       id: 2,
       type: 'image',
-      src: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=500&fit=crop',
-      alt: 'Team celebration',
-      category: 'Team Photos',
+      src: 'https://auav.ca/wp-content/uploads/2025/07/R62_7335-DP3-1024x683.jpg',
+      alt: '',
+      category: 'Participant Photos',
     },
     {
       id: 3,
       type: 'image',
-      src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop',
-      alt: 'Arena setup',
-      category: 'Arena Shots',
+      src: 'https://auav.ca/wp-content/uploads/2025/07/R62_7457-DP3-1024x683.jpg',
+      alt: '',
+      category: 'Participant Photos',
     },
     {
       id: 4,
       type: 'image',
-      src: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=600&fit=crop',
-      alt: 'Drone in flight',
-      category: 'Action Shots',
+      src: 'https://auav.ca/wp-content/uploads/2025/07/R62_7615-DP3-1024x683.jpeg',
+      alt: '',
+      category: 'Team Photos',
     },
     {
       id: 5,
-      type: 'video',
-      src: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=300&fit=crop',
-      alt: 'Match highlights',
-      category: 'Video Content',
+      type: 'image',
+      src: 'https://auav.ca/wp-content/uploads/2025/07/R62_6985-DP3-1024x683.jpg',
+      alt: '',
+      category: 'Action Shots',
     },
     {
       id: 6,
       type: 'image',
-      src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop',
-      alt: 'Participant portrait',
+      src: 'https://auav.ca/wp-content/uploads/2025/07/R62_7257-DP3-1024x683.jpg',
+      alt: '',
       category: 'Participant Photos',
     },
   ];
 
   const categories = ['All', 'Action Shots', 'Team Photos', 'Arena Shots', 'Video Content', 'Participant Photos'];
+
+  // Filter gallery items based on selected category
+  const filteredItems = selectedCategory === 'All' 
+    ? galleryItems 
+    : galleryItems.filter(item => item.category === selectedCategory);
 
   return (
     <section id="gallery" className="section-padding bg-white">
@@ -72,9 +78,9 @@ const GallerySection: React.FC = () => {
           <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-deep-space mb-6">
             Highlights & <span className="text-gradient">Media</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          {/* <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Experience the excitement of drone soccer through our collection of photos and videos.
-          </p>
+          </p> */}
         </motion.div>
 
         {/* Category Filter */}
@@ -89,7 +95,12 @@ const GallerySection: React.FC = () => {
               key={category}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-6 py-2 rounded-full bg-light-gray text-deep-space font-medium hover:bg-electric-blue hover:text-white transition-all duration-300"
+              onClick={() => setSelectedCategory(category)}
+              className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
+                selectedCategory === category
+                  ? 'bg-electric-blue text-white'
+                  : 'bg-light-gray text-deep-space hover:bg-electric-blue hover:text-white'
+              }`}
             >
               {category}
             </motion.button>
@@ -103,7 +114,7 @@ const GallerySection: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6"
         >
-          {galleryItems.map((item, index) => (
+          {filteredItems.map((item, index) => (
             <motion.div
               key={item.id}
               initial={{ opacity: 0, y: 30 }}
@@ -159,8 +170,8 @@ const GallerySection: React.FC = () => {
                 <FaTimes size={24} />
               </button>
               <img
-                src={galleryItems[selectedImage].src}
-                alt={galleryItems[selectedImage].alt}
+                src={filteredItems[selectedImage].src}
+                alt={filteredItems[selectedImage].alt}
                 className="max-w-full max-h-full object-contain rounded-lg"
               />
             </motion.div>
