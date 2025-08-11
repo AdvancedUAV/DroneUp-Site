@@ -1,15 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaFacebook, FaInstagram, FaTwitter, FaYoutube, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaTwitter, FaYoutube, FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin } from 'react-icons/fa';
 
 const Footer: React.FC = () => {
   //const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { name: 'Facebook', icon: FaFacebook, href: '#', color: 'hover:text-blue-600' },
-    { name: 'Instagram', icon: FaInstagram, href: '#', color: 'hover:text-pink-600' },
-    { name: 'Twitter', icon: FaTwitter, href: '#', color: 'hover:text-blue-400' },
-    { name: 'YouTube', icon: FaYoutube, href: '#', color: 'hover:text-red-600' },
+    { name: 'Facebook', icon: FaFacebook, href: 'https://www.facebook.com/profile.php?id=61571232464007', color: 'hover:text-blue-600' },
+    { name: 'Instagram', icon: FaInstagram, href: 'https://www.instagram.com/auavtech/', color: 'hover:text-pink-600' },
+    { name: 'Twitter', icon: FaTwitter, href: 'https://x.com/AUAVyyc', color: 'hover:text-blue-400' },
+    { name: 'YouTube', icon: FaYoutube, href: 'https://www.youtube.com/channel/UC9436ojngaL50ShfDK-QKGg', color: 'hover:text-red-600' },
+    { name: 'LinkedIn', icon: FaLinkedin, href: 'https://www.linkedin.com/company/aerialogic-technology-inc/', color: 'hover:text-blue-600' },
   ];
 
   return (
@@ -60,15 +61,15 @@ const Footer: React.FC = () => {
             <div className="space-y-4">
               <div className="flex items-center md:justify-end space-x-3">
                 <FaEnvelope className="text-electric-blue" />
-                <span className="text-gray-300">info@droneup.com</span>
+                <span className="text-gray-300">info@auav.ca</span>
               </div>
-              {/* <div className="flex items-center md:justify-end space-x-3">
-                <FaPhone className="text-electric-blue" />
-                <span className="text-gray-300">(555) 123-4567</span>
-              </div> */}
               <div className="flex items-center md:justify-end space-x-3">
                 <FaMapMarkerAlt className="text-electric-blue" />
-                <span className="text-gray-300">123 Drone Arena Way, Tech City, TC 12345</span>
+                <span className="text-gray-300">1423 45 Ave NE, Calgary, AB</span>
+              </div>
+              <div className="flex items-center md:justify-end space-x-3">
+                {/* <FaPhone className="text-electric-blue" /> */}
+                <span className="text-gray-300">©2025-2026 AdvancedUAV Tech Inc. | Made with 💖 in Calgary</span>
               </div>
             </div>
           </motion.div>

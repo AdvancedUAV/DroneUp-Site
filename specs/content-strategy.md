@@ -106,9 +106,9 @@ The DroneUp website content strategy focuses on engaging storytelling, clear inf
 
 #### Content Categories
 1. **Event Photos**
-   - Action shots from competitions
+   - Action Photos from competitions
    - Team celebrations
-   - Arena and equipment shots
+   - Arena and equipment Photos
    - Participant portraits
 
 2. **Video Content**
@@ -169,7 +169,7 @@ The DroneUp website content strategy focuses on engaging storytelling, clear inf
 - **High Quality**: Professional photos and videos
 - **Relevant**: Content that supports messaging
 - **Diverse**: Represent different skill levels and demographics
-- **Engaging**: Action shots and emotional moments
+- **Engaging**: Action Photos and emotional moments
 
 ## Content Management
 

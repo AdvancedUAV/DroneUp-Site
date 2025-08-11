@@ -31,7 +31,7 @@ const AboutSection: React.FC = () => {
     {
       icon: FaTrophy,
       title: 'Professional Setup',
-      description: 'State-of-the-art arena and equipment',
+      description: 'Run by licensed drone pilots who will be providing assistance',
       color: 'from-hot-pink to-pink-400',
     },
   ];

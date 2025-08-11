@@ -138,7 +138,7 @@ const RegistrationSection: React.FC = () => {
         </div>
 
         {/* Contact Information */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.8 }}
@@ -159,7 +159,7 @@ const RegistrationSection: React.FC = () => {
               <p className="text-gray-600">123 Drone Arena Way, Tech City, TC 12345</p>
             </div>
           </div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );

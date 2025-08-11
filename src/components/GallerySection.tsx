@@ -19,7 +19,7 @@ const GallerySection: React.FC = () => {
       type: 'image',
       src: 'https://auav.ca/wp-content/uploads/2025/07/R62_7224-DP3-1024x683.jpg',
       alt: '',
-      category: 'Action Shots',
+      category: 'Action Photos',
     },
     {
       id: 2,
@@ -47,7 +47,7 @@ const GallerySection: React.FC = () => {
       type: 'image',
       src: 'https://auav.ca/wp-content/uploads/2025/07/R62_6985-DP3-1024x683.jpg',
       alt: '',
-      category: 'Action Shots',
+      category: 'Action Photos',
     },
     {
       id: 6,
@@ -58,7 +58,7 @@ const GallerySection: React.FC = () => {
     },
   ];
 
-  const categories = ['All', 'Action Shots', 'Team Photos', 'Arena Shots', 'Video Content', 'Participant Photos'];
+  const categories = ['All', 'Action Photos', 'Team Photos', 'Arena Photos', 'Video Content', 'Participant Photos'];
 
   // Filter gallery items based on selected category
   const filteredItems = selectedCategory === 'All' 

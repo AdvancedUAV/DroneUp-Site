@@ -91,9 +91,9 @@ The DroneUp website requires high-quality content and assets that effectively co
 ### 5. Gallery Content
 
 #### Event Photos
-- **Action Shots**: Drones in flight during competition
+- **Action Photos**: Drones in flight during competition
 - **Team Photos**: Participants and teams
-- **Arena Shots**: Competition venue and setup
+- **Arena Photos**: Competition venue and setup
 - **Celebration Photos**: Winners and participants
 
 ### 6. Registration Content
@@ -165,7 +165,7 @@ The DroneUp website requires high-quality content and assets that effectively co
 - **Content**:
   - Event highlights
   - Participant portraits
-  - Action shots
+  - Action Photos
   - Behind-the-scenes
 
 ### 3. Icon Requirements
