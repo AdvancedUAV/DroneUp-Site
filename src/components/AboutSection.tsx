@@ -13,7 +13,7 @@ const AboutSection: React.FC = () => {
   const [currentText, setCurrentText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const words = ['Tinker', 'Build', 'Create', 'Innovate', 'Learn'];
+  const words = ['Pilot.', 'Program.', 'Fly.', 'Tinker.', 'Build.', 'Prototype.', 'Code.'];
 
   useEffect(() => {
     if (!inView) return;
@@ -109,11 +109,11 @@ const AboutSection: React.FC = () => {
           className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16"
         >
           <div className="max-w-4xl mx-auto text-center">
-            <p className="text-lg text-gray-600 leading-relaxed">
-              Calgary's newest design challenge, where anyone can learn to{' '}
+            <p className="text-2xl text-gray-600 leading-relaxed">
+              It's a design challenge, where anyone can learn to{' '}
               <span className="text-electric-blue font-semibold">
                 {currentText}
-                <span className="animate-pulse">|</span>
+                <span className="blink-cursor">|</span>
               </span>
             </p>
           </div>
