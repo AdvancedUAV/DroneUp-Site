@@ -88,8 +88,7 @@ const HeroSection: React.FC = () => {
             className="text-lg md:text-xl text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed"
           >
             Experience the thrill of drone competition at the highest level.<br></br> 
-            Whether you're a seasoned pilot or just starting out, DroneUp offers an exciting, 
-            safe, and competitive environment for all skill ranges.
+            Pushing creative, technical skills, and teamwork to new heights in a dynamic and hands-on environment.
           </motion.p>
 
           {/* CTA Buttons */}

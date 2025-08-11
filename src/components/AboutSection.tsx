@@ -109,7 +109,7 @@ const AboutSection: React.FC = () => {
           className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16"
         >
           <div className="max-w-4xl mx-auto text-center">
-            <p className="text-2xl text-gray-600 leading-relaxed">
+            <p className="text-2xl text-gray-700 leading-relaxed">
               It's a design challenge, where anyone can learn to{' '}
               <span className="text-electric-blue font-semibold">
                 {currentText}
