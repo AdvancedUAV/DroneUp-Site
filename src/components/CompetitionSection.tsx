@@ -77,7 +77,6 @@ const CompetitionSection: React.FC<CompetitionSectionProps> = ({ competitionType
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-              whileHover={{ y: -10 }}
               className="bg-white/10 backdrop-blur-custom rounded-xl p-6 text-center group hover:bg-white/20 transition-all duration-300"
             >
               <div className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r ${detail.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>

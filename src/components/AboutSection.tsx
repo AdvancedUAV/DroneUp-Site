@@ -132,7 +132,7 @@ const AboutSection: React.FC = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
-              className="bg-white rounded-xl shadow-lg p-6 text-center"
+              className="bg-white rounded-xl shadow-lg p-6 text-center hover:bg-black/5"
             >
               <div className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r ${feature.color} flex items-center justify-center`}>
                 <feature.icon className="text-white text-2xl" />
