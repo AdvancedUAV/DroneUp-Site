@@ -14,12 +14,12 @@ Calgary's Premier Youth Drone Competition - A modern, sleek, one-page React webs
 ## 🎯 Sections
 
 1. **Hero Section**: Compelling landing area with main headline, date display, and CTA buttons
-2. **About Section**: Information about DroneUp and drone soccer with key features
+2. **About Section**: Information about DroneUp and the two compettion categories with key features
 3. **Competition Details**: Rules, format, scoring, and equipment specifications
 4. **Schedule Section**: Two-day event agenda with detailed timeline
 5. **Gallery Section**: Photo and video showcase with lightbox functionality
-6. **Registration Section**: Comprehensive registration form with FAQ
-7. **Footer**: Contact information, social links, and newsletter signup
+6. **Registration Section**: Comprehensive registration form (Google Form) with FAQ
+7. **Footer**: Contact information, social links
 
 ## 🛠️ Tech Stack
 
@@ -31,12 +31,13 @@ Calgary's Premier Youth Drone Competition - A modern, sleek, one-page React webs
 - **State Management**: React Hooks
 - **Intersection Observer**: React Intersection Observer
 
-## 📦 Installation
+## 🤝 Contributing
 
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
    cd droneup-website
+   git checkout develop
    ```
 
 2. **Install dependencies**
@@ -51,6 +52,25 @@ Calgary's Premier Youth Drone Competition - A modern, sleek, one-page React webs
 
 4. **Open your browser**
    Navigate to `http://localhost:3000` to view the website.
+
+5. Commit your changes: `git commit -am 'Add feature'`
+6. Push to the branch: `git push origin feature-name`
+7. Submit a pull request into `main` branch
+
+## 🚀 Deployment
+
+### Build for Production
+```bash
+npm run build
+```
+
+### Preview Production Build
+```bash
+npm run preview
+```
+
+- On every contribution to the `main` branch, Github Actions will automatically build for production in the `dist` branch. A webhook informs Hostinger to automatically deploy the build to the domain `https://drone-up.org`.
+
 
 ## 🏗️ Project Structure
 
@@ -113,63 +133,12 @@ The website is built with a mobile-first approach and includes:
 4. **Schedule**: Modify event timeline in `ScheduleSection.tsx`
 5. **Gallery**: Replace sample images with actual content in `GallerySection.tsx`
 6. **Registration**: Update form fields and FAQ in `RegistrationSection.tsx`
+7. **Footer**: Update social links in `Footer.tsx`
+
+8. **Google Form**: Update the Google Form URL in `RegistrationSection.tsx`
+9. **Competition Details**: Update the competition details in `data/competitionData.ts`
 
 ### Styling
 - **Colors**: Update color variables in `tailwind.config.js`
 - **Typography**: Modify font families in `index.css`
 - **Components**: Edit component-specific styles in individual component files
-
-## 🚀 Deployment
-
-### Build for Production
-```bash
-npm run build
-```
-
-### Preview Production Build
-```bash
-npm run preview
-```
-
-### Deploy to Vercel
-1. Install Vercel CLI: `npm i -g vercel`
-2. Run: `vercel`
-3. Follow the prompts to deploy
-
-### Deploy to Netlify
-1. Build the project: `npm run build`
-2. Drag the `dist` folder to Netlify
-3. Configure build settings if needed
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature-name`
-3. Commit your changes: `git commit -am 'Add feature'`
-4. Push to the branch: `git push origin feature-name`
-5. Submit a pull request
-
-## 📞 Support
-
-For questions or support, please contact:
-- **Email**: info@droneup.com
-- **Address**: 123 Drone Arena Way, Tech City, TC 12345
-
-## 🎯 Future Enhancements
-
-- [ ] Multi-language support
-- [ ] Advanced analytics integration
-- [ ] Mobile app development
-- [ ] Community features
-- [ ] Live streaming integration
-- [ ] Advanced registration system
-- [ ] Payment processing
-- [ ] Admin dashboard
-
----
-
-**Built with ❤️ for the DroneUp community**
