@@ -119,7 +119,7 @@ const GallerySection: React.FC = () => {
               key={item.id}
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
+              transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
               whileHover={{ y: -5 }}
               className="break-inside-avoid group relative overflow-hidden rounded-xl shadow-lg cursor-pointer"
               onClick={() => setSelectedImage(index)}

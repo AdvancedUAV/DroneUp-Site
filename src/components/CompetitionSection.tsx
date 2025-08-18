@@ -85,7 +85,7 @@ const CompetitionSection: React.FC<CompetitionSectionProps> = ({ competitionType
               key={detail.title}
               initial={{ opacity: 0, y: 30 }}
               animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+              transition={{ duration: 0.4, delay: 0.1 + index * 0.1 }}
               className="bg-white/10 backdrop-blur-custom rounded-xl p-6 text-center group hover:bg-white/20 transition-all duration-300"
             >
               <div className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r ${detail.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
@@ -138,7 +138,7 @@ const CompetitionSection: React.FC<CompetitionSectionProps> = ({ competitionType
                   key={spec.title}
                   initial={{ opacity: 0, x: 20 }}
                   animate={shouldAnimate ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
+                  transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
                   className="flex items-center space-x-4 p-4 bg-white/5 rounded-lg"
                 >
                   <div className="w-12 h-12 bg-gradient-to-r from-electric-blue to-neon-green rounded-lg flex items-center justify-center flex-shrink-0">
