@@ -1,213 +1,183 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FaChevronLeft, FaChevronRight, FaPlay, FaExpand } from 'react-icons/fa';
+import { FaPlay, FaExpand, FaTimes } from 'react-icons/fa';
 
-interface GallerySectionProps {
-  forceAnimation?: boolean;
-}
-
-const GallerySection: React.FC<GallerySectionProps> = ({ forceAnimation = false }) => {
+const GallerySection: React.FC = () => {
   const [ref, inView] = useInView({
+    triggerOnce: true,
     threshold: 0.1,
-    initialInView: true,
   });
 
-  const [shouldAnimate, setShouldAnimate] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
 
-  useEffect(() => {
-    if (inView || forceAnimation) {
-      setShouldAnimate(true);
-    }
-  }, [inView, forceAnimation]);
-
-  // Placeholder gallery data - replace with actual images
-  const galleryImages = [
+  // Sample gallery items - in a real app, these would come from a CMS or API
+  const galleryItems = [
     {
       id: 1,
-      src: '/api/placeholder/600/400',
-      alt: 'Drone Soccer Match',
-      title: 'Intense Drone Soccer Action',
-      category: 'Competition',
+      type: 'image',
+      src: 'https://auav.ca/wp-content/uploads/2025/07/R62_7224-DP3-1024x683.jpg',
+      alt: '',
+      category: 'Action Photos',
     },
     {
       id: 2,
-      src: '/api/placeholder/600/400',
-      alt: 'Team Practice Session',
-      title: 'Teams Preparing for Battle',
-      category: 'Practice',
+      type: 'image',
+      src: 'https://auav.ca/wp-content/uploads/2025/07/R62_7335-DP3-1024x683.jpg',
+      alt: '',
+      category: 'Participant Photos',
     },
     {
       id: 3,
-      src: '/api/placeholder/600/400',
-      alt: 'Equipment Setup',
-      title: 'Professional Equipment Setup',
-      category: 'Equipment',
+      type: 'image',
+      src: 'https://auav.ca/wp-content/uploads/2025/07/R62_7457-DP3-1024x683.jpg',
+      alt: '',
+      category: 'Participant Photos',
     },
     {
       id: 4,
-      src: '/api/placeholder/600/400',
-      alt: 'Awards Ceremony',
-      title: 'Celebrating Winners',
-      category: 'Awards',
+      type: 'image',
+      src: 'https://auav.ca/wp-content/uploads/2025/07/R62_7615-DP3-1024x683.jpeg',
+      alt: '',
+      category: 'Team Photos',
     },
     {
       id: 5,
-      src: '/api/placeholder/600/400',
-      alt: 'Safety Briefing',
-      title: 'Safety First Approach',
-      category: 'Safety',
+      type: 'image',
+      src: 'https://auav.ca/wp-content/uploads/2025/07/R62_6985-DP3-1024x683.jpg',
+      alt: '',
+      category: 'Action Photos',
     },
     {
       id: 6,
-      src: '/api/placeholder/600/400',
-      alt: 'Spectator Area',
-      title: 'Exciting Spectator Experience',
-      category: 'Spectators',
+      type: 'image',
+      src: 'https://auav.ca/wp-content/uploads/2025/07/R62_7257-DP3-1024x683.jpg',
+      alt: '',
+      category: 'Participant Photos',
     },
   ];
 
-  const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % galleryImages.length);
-  };
+  const categories = ['All', 'Action Photos', 'Team Photos', 'Arena Photos', 'Video Content', 'Participant Photos'];
 
-  const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
-  };
-
-  const openModal = (index: number) => {
-    setCurrentImageIndex(index);
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+  // Filter gallery items based on selected category
+  const filteredItems = selectedCategory === 'All' 
+    ? galleryItems 
+    : galleryItems.filter(item => item.category === selectedCategory);
 
   return (
-    <section id="gallery" className="section-padding bg-deep-space text-white">
+    <section id="gallery" className="section-padding bg-white">
       <div className="container-custom">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
-          animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-orbitron font-bold mb-6">
-            Event <span className="text-gradient">Gallery</span>
+          <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-deep-space mb-6">
+            Highlights & <span className="text-gradient">Media</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Experience the excitement and energy of DroneUp through our visual journey.
-          </p>
+          {/* <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Experience the excitement of drone soccer through our collection of photos and videos.
+          </p> */}
+        </motion.div>
+
+        {/* Category Filter */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="flex flex-wrap justify-center gap-4 mb-12"
+        >
+          {categories.map((category) => (
+            <motion.button
+              key={category}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setSelectedCategory(category)}
+              className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
+                selectedCategory === category
+                  ? 'bg-electric-blue text-white'
+                  : 'bg-light-gray text-deep-space hover:bg-electric-blue hover:text-white'
+              }`}
+            >
+              {category}
+            </motion.button>
+          ))}
         </motion.div>
 
         {/* Gallery Grid */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16"
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6"
         >
-          {galleryImages.map((image, index) => (
+          {filteredItems.map((item, index) => (
             <motion.div
-              key={image.id}
+              key={item.id}
               initial={{ opacity: 0, y: 30 }}
-              animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="group relative bg-white/10 backdrop-blur-custom rounded-xl overflow-hidden cursor-pointer"
-              onClick={() => openModal(index)}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
+              whileHover={{ y: -5 }}
+              className="break-inside-avoid group relative overflow-hidden rounded-xl shadow-lg cursor-pointer"
+              onClick={() => setSelectedImage(index)}
             >
-              <div className="aspect-w-16 aspect-h-9 bg-gradient-to-br from-electric-blue to-neon-green p-1 rounded-xl">
-                <div className="w-full h-48 bg-gradient-to-br from-electric-blue/20 to-neon-green/20 rounded-lg flex items-center justify-center">
-                  <span className="text-white/60 text-sm">Image {image.id}</span>
+              <div className="relative">
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {item.type === 'video' ? (
+                      <FaPlay className="text-white text-3xl" />
+                    ) : (
+                      <FaExpand className="text-white text-2xl" />
+                    )}
+                  </div>
                 </div>
-              </div>
-              
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <h4 className="text-lg font-orbitron font-semibold mb-2">{image.title}</h4>
-                  <p className="text-sm text-gray-300">{image.category}</p>
-                </div>
-              </div>
-              
-              <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                  <FaExpand className="text-white text-sm" />
+                <div className="absolute bottom-4 left-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm">
+                  {item.category}
                 </div>
               </div>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Gallery Navigation */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="flex justify-center space-x-4"
-        >
-          <button
-            onClick={prevImage}
-            className="w-12 h-12 bg-white/10 backdrop-blur-custom rounded-full flex items-center justify-center hover:bg-white/20 transition-colors duration-300"
+        {/* Lightbox Modal */}
+        {selectedImage !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+            onClick={() => setSelectedImage(null)}
           >
-            <FaChevronLeft className="text-white" />
-          </button>
-          <div className="flex space-x-2">
-            {galleryImages.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentImageIndex(index)}
-                className={`w-3 h-3 rounded-full transition-colors duration-300 ${
-                  index === currentImageIndex ? 'bg-electric-blue' : 'bg-white/30'
-                }`}
-              />
-            ))}
-          </div>
-          <button
-            onClick={nextImage}
-            className="w-12 h-12 bg-white/10 backdrop-blur-custom rounded-full flex items-center justify-center hover:bg-white/20 transition-colors duration-300"
-          >
-            <FaChevronRight className="text-white" />
-          </button>
-        </motion.div>
-      </div>
-
-      {/* Modal */}
-      {isModalOpen && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
-          onClick={closeModal}
-        >
-          <div className="relative max-w-4xl w-full">
-            <button
-              onClick={closeModal}
-              className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors duration-300 z-10"
+            <motion.div
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.8 }}
+              className="relative max-w-4xl max-h-full"
+              onClick={(e) => e.stopPropagation()}
             >
-              <span className="text-white text-xl">&times;</span>
-            </button>
-            
-            <div className="bg-gradient-to-br from-electric-blue/20 to-neon-green/20 p-1 rounded-xl">
-              <div className="w-full h-96 bg-gradient-to-br from-electric-blue/10 to-neon-green/10 rounded-lg flex items-center justify-center">
-                <span className="text-white/60 text-lg">Modal Image {galleryImages[currentImageIndex].id}</span>
-              </div>
-            </div>
-            
-            <div className="text-center mt-4">
-              <h3 className="text-xl font-orbitron font-semibold text-white mb-2">
-                {galleryImages[currentImageIndex].title}
-              </h3>
-              <p className="text-gray-300">{galleryImages[currentImageIndex].category}</p>
-            </div>
-          </div>
-        </motion.div>
-      )}
+              <button
+                onClick={() => setSelectedImage(null)}
+                className="absolute -top-12 right-0 text-white hover:text-electric-blue transition-colors duration-300"
+              >
+                <FaTimes size={24} />
+              </button>
+              <img
+                src={filteredItems[selectedImage].src}
+                alt={filteredItems[selectedImage].alt}
+                className="max-w-full max-h-full object-contain rounded-lg"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </div>
     </section>
   );
 };
