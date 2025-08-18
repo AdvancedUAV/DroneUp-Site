@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaPlay, FaArrowDown } from 'react-icons/fa';
+import { FaArrowDown } from 'react-icons/fa';
 
-interface HeroSectionProps {
-  forceAnimation?: boolean;
-}
-
-const HeroSection: React.FC<HeroSectionProps> = ({ forceAnimation = false }) => {
+const HeroSection: React.FC = () => {
   const [shouldAnimate, setShouldAnimate] = useState(false);
 
   useEffect(() => {
