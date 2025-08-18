@@ -19,8 +19,8 @@ const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between gap-8">
           {/* Brand Section */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
             className="md:w-1/2"
           >
@@ -52,8 +52,8 @@ const Footer: React.FC = () => {
 
           {/* Contact Info */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="md:w-1/2 md:text-right"
           >

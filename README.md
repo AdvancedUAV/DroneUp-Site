@@ -14,7 +14,7 @@ Calgary's Premier Youth Drone Competition - A modern, sleek, one-page React webs
 ## 🎯 Sections
 
 1. **Hero Section**: Compelling landing area with main headline, date display, and CTA buttons
-2. **About Section**: Information about DroneUp and the two compettion categories with key features
+2. **About Section**: Information about DroneUp and the two competition categories with key features
 3. **Competition Details**: Rules, format, scoring, and equipment specifications
 4. **Schedule Section**: Two-day event agenda with detailed timeline
 5. **Gallery Section**: Photo and video showcase with lightbox functionality

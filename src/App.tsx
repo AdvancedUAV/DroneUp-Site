@@ -9,14 +9,13 @@ import RegistrationSection from './components/RegistrationSection';
 import SponsorsSection from './components/SponsorsSection';
 import Footer from './components/Footer';
 
-
 const App: React.FC = () => {
   const [competitionType, setCompetitionType] = useState<'drone-soccer' | 'autonomous'>('drone-soccer');
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="bg-white">
       <Header />
-      <main>
+      <main className="flex-1">
         <HeroSection />
         <AboutSection />
         <CompetitionSection 
