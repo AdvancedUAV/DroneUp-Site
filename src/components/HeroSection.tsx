@@ -14,6 +14,20 @@ const HeroSection: React.FC<HeroSectionProps> = ({ forceAnimation = false }) => 
     setShouldAnimate(true);
   }, [forceAnimation]);
 
+  const scrollToNext = () => {
+    const aboutSection = document.querySelector('#about');
+    if (aboutSection) {
+      const navbarHeight = 60; // Approximate navbar height in pixels
+      const elementPosition = aboutSection.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - navbarHeight - 20; // Additional 20px buffer
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-deep-space via-deep-space to-black flex items-center justify-center overflow-hidden">
       {/* Background Elements */}
@@ -53,14 +67,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({ forceAnimation = false }) => 
             initial={{ opacity: 0, y: 20 }}
             animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8"
+            className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-14"
           >
             Calgary's premier youth drone competition featuring Drone Soccer and Autonomous Programming challenges
           </motion.p>
         </motion.div>
 
         {/* CTA Buttons */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.8 }}
@@ -80,7 +94,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ forceAnimation = false }) => 
           >
             Learn More
           </motion.button>
-        </motion.div>
+        </motion.div> */}
 
         {/* Stats */}
         <motion.div
@@ -108,12 +122,13 @@ const HeroSection: React.FC<HeroSectionProps> = ({ forceAnimation = false }) => 
           initial={{ opacity: 0 }}
           animate={shouldAnimate ? { opacity: 1 } : {}}
           transition={{ duration: 1, delay: 1.2 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          className="absolute left-1/2 transform -translate-x-1/2 mt-4"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
             className="text-gray-400 hover:text-white transition-colors duration-300 cursor-pointer"
+            onClick={scrollToNext}
           >
             <FaArrowDown className="text-2xl mx-auto mb-2" />
             <span className="text-sm">Scroll to explore</span>
