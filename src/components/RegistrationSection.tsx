@@ -1,19 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaUser, FaEnvelope, FaPhone, FaUsers, FaCalendarAlt, FaShieldAlt } from 'react-icons/fa';
 
-interface RegistrationSectionProps {
-  forceAnimation?: boolean;
-}
-
-const RegistrationSection: React.FC<RegistrationSectionProps> = ({ forceAnimation = false }) => {
+const RegistrationSection: React.FC = () => {
   const [ref, inView] = useInView({
     threshold: 0.1,
     initialInView: true,
   });
 
-  const [shouldAnimate, setShouldAnimate] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -25,12 +20,6 @@ const RegistrationSection: React.FC<RegistrationSectionProps> = ({ forceAnimatio
     experience: 'beginner',
     agreeToTerms: false,
   });
-
-  useEffect(() => {
-    if (inView || forceAnimation) {
-      setShouldAnimate(true);
-    }
-  }, [inView, forceAnimation]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
@@ -70,7 +59,7 @@ const RegistrationSection: React.FC<RegistrationSectionProps> = ({ forceAnimatio
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
-          animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
@@ -86,7 +75,7 @@ const RegistrationSection: React.FC<RegistrationSectionProps> = ({ forceAnimatio
           {/* Registration Form */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
-            animate={shouldAnimate ? { opacity: 1, x: 0 } : {}}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="bg-white rounded-2xl shadow-xl p-8"
           >
@@ -241,7 +230,7 @@ const RegistrationSection: React.FC<RegistrationSectionProps> = ({ forceAnimatio
           {/* Features and Information */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
-            animate={shouldAnimate ? { opacity: 1, x: 0 } : {}}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="space-y-8"
           >
@@ -274,7 +263,7 @@ const RegistrationSection: React.FC<RegistrationSectionProps> = ({ forceAnimatio
                 <motion.div
                   key={feature.title}
                   initial={{ opacity: 0, y: 20 }}
-                  animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
                   className="flex items-start space-x-4"
                 >

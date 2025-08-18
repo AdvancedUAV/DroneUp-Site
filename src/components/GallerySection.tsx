@@ -1,27 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaChevronLeft, FaChevronRight, FaPlay, FaExpand } from 'react-icons/fa';
 
-interface GallerySectionProps {
-  forceAnimation?: boolean;
-}
-
-const GallerySection: React.FC<GallerySectionProps> = ({ forceAnimation = false }) => {
+const GallerySection: React.FC = () => {
   const [ref, inView] = useInView({
     threshold: 0.1,
     initialInView: true,
   });
 
-  const [shouldAnimate, setShouldAnimate] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  useEffect(() => {
-    if (inView || forceAnimation) {
-      setShouldAnimate(true);
-    }
-  }, [inView, forceAnimation]);
 
   // Placeholder gallery data - replace with actual images
   const galleryImages = [
@@ -92,7 +81,7 @@ const GallerySection: React.FC<GallerySectionProps> = ({ forceAnimation = false 
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
-          animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
@@ -107,7 +96,7 @@ const GallerySection: React.FC<GallerySectionProps> = ({ forceAnimation = false 
         {/* Gallery Grid */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16"
         >
@@ -115,7 +104,7 @@ const GallerySection: React.FC<GallerySectionProps> = ({ forceAnimation = false 
             <motion.div
               key={image.id}
               initial={{ opacity: 0, y: 30 }}
-              animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
               whileHover={{ y: -10, scale: 1.02 }}
               className="group relative bg-white/10 backdrop-blur-custom rounded-xl overflow-hidden cursor-pointer"
@@ -146,7 +135,7 @@ const GallerySection: React.FC<GallerySectionProps> = ({ forceAnimation = false 
         {/* Gallery Navigation */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.8 }}
           className="flex justify-center space-x-4"
         >

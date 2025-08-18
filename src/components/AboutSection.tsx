@@ -3,11 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaShieldAlt, FaUsers, FaRocket, FaTrophy } from 'react-icons/fa';
 
-interface AboutSectionProps {
-  forceAnimation?: boolean;
-}
-
-const AboutSection: React.FC<AboutSectionProps> = ({ forceAnimation = false }) => {
+const AboutSection: React.FC = () => {
   const [ref, inView] = useInView({
     threshold: 0.1,
     initialInView: true,
@@ -16,18 +12,11 @@ const AboutSection: React.FC<AboutSectionProps> = ({ forceAnimation = false }) =
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [currentText, setCurrentText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
-  const [shouldAnimate, setShouldAnimate] = useState(false);
 
   const words = ['Pilot.', 'Program.', 'Fly.', 'Tinker.', 'Build.', 'Prototype.', 'Code.'];
 
   useEffect(() => {
-    if (inView || forceAnimation) {
-      setShouldAnimate(true);
-    }
-  }, [inView, forceAnimation]);
-
-  useEffect(() => {
-    if (!shouldAnimate) return;
+    if (!inView) return;
 
     const currentWord = words[currentWordIndex];
     
@@ -58,7 +47,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({ forceAnimation = false }) =
         return () => clearTimeout(timeout);
       }
     }
-  }, [currentText, currentWordIndex, isDeleting, shouldAnimate, words]);
+  }, [currentText, currentWordIndex, isDeleting, inView, words]);
 
   const features = [
     {
@@ -99,7 +88,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({ forceAnimation = false }) =
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
-          animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
@@ -115,7 +104,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({ forceAnimation = false }) =
         {/* Mission Statement */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16"
         >
@@ -133,7 +122,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({ forceAnimation = false }) =
         {/* Key Features */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.4 }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16"
         >
@@ -141,7 +130,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({ forceAnimation = false }) =
             <motion.div
               key={feature.title}
               initial={{ opacity: 0, y: 30 }}
-              animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
               className="bg-white rounded-xl shadow-lg p-6 text-center"
             >
@@ -161,7 +150,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({ forceAnimation = false }) =
         {/* Statistics */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.8 }}
           className="grid grid-cols-1 md:grid-cols-3 gap-8"
         >
@@ -169,7 +158,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({ forceAnimation = false }) =
             <motion.div
               key={stat.label}
               initial={{ opacity: 0, scale: 0.8 }}
-              animate={shouldAnimate ? { opacity: 1, scale: 1 } : {}}
+              animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.6, delay: 1 + index * 0.1 }}
               className="text-center"
             >
