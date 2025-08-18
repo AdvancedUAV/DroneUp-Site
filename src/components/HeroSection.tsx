@@ -12,7 +12,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ forceAnimation = false }) => 
   useEffect(() => {
     // Hero section should always animate on load
     setShouldAnimate(true);
-  }, [forceAnimation]);
+  }, []);
 
   const scrollToNext = () => {
     const aboutSection = document.querySelector('#about');
