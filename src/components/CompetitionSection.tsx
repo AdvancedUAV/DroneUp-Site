@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 // @ts-ignore
@@ -8,13 +8,16 @@ import { droneSoccerData, autonomousChallengeData, CompetitionData } from '../da
 interface CompetitionSectionProps {
   competitionType: 'drone-soccer' | 'autonomous';
   setCompetitionType: (type: 'drone-soccer' | 'autonomous') => void;
+  forceAnimation?: boolean;
 }
 
-const CompetitionSection: React.FC<CompetitionSectionProps> = ({ competitionType, setCompetitionType }) => {
+const CompetitionSection: React.FC<CompetitionSectionProps> = ({ competitionType, setCompetitionType, forceAnimation = false }) => {
   const [ref, inView] = useInView({
-    triggerOnce: true,
     threshold: 0.1,
+    initialInView: true,
   });
+
+  const [shouldAnimate, setShouldAnimate] = useState(false);
 
   const currentData: CompetitionData = competitionType === 'drone-soccer' ? droneSoccerData : autonomousChallengeData;
 
@@ -22,13 +25,19 @@ const CompetitionSection: React.FC<CompetitionSectionProps> = ({ competitionType
   const rules = currentData.rules;
   const equipmentSpecs = currentData.equipmentSpecs;
 
+  useEffect(() => {
+    if (inView || forceAnimation) {
+      setShouldAnimate(true);
+    }
+  }, [inView, forceAnimation]);
+
   return (
     <section id="competition" className="section-padding bg-deep-space text-white">
       <div className="container-custom">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
@@ -67,7 +76,7 @@ const CompetitionSection: React.FC<CompetitionSectionProps> = ({ competitionType
         {/* Format Details */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16"
         >
@@ -75,7 +84,7 @@ const CompetitionSection: React.FC<CompetitionSectionProps> = ({ competitionType
             <motion.div
               key={detail.title}
               initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
               className="bg-white/10 backdrop-blur-custom rounded-xl p-6 text-center group hover:bg-white/20 transition-all duration-300"
             >
@@ -95,7 +104,7 @@ const CompetitionSection: React.FC<CompetitionSectionProps> = ({ competitionType
         {/* Rules & Regulations */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.6 }}
           className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16"
         >
@@ -108,7 +117,7 @@ const CompetitionSection: React.FC<CompetitionSectionProps> = ({ competitionType
                 <motion.li
                   key={index}
                   initial={{ opacity: 0, x: -20 }}
-                  animate={inView ? { opacity: 1, x: 0 } : {}}
+                  animate={shouldAnimate ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
                   className="flex items-start space-x-3"
                 >
@@ -128,7 +137,7 @@ const CompetitionSection: React.FC<CompetitionSectionProps> = ({ competitionType
                 <motion.div
                   key={spec.title}
                   initial={{ opacity: 0, x: 20 }}
-                  animate={inView ? { opacity: 1, x: 0 } : {}}
+                  animate={shouldAnimate ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
                   className="flex items-center space-x-4 p-4 bg-white/5 rounded-lg"
                 >
@@ -148,7 +157,7 @@ const CompetitionSection: React.FC<CompetitionSectionProps> = ({ competitionType
         {/* Equipment Note */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 1 }}
           className="bg-gradient-to-r from-electric-blue to-neon-green rounded-2xl p-8 text-center"
         >

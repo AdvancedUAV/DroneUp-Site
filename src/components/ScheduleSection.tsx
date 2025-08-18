@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 // @ts-ignore
@@ -7,17 +7,26 @@ import { droneSoccerData, autonomousChallengeData } from '../data/competitionDat
 
 interface ScheduleSectionProps {
   competitionType: 'drone-soccer' | 'autonomous';
+  forceAnimation?: boolean;
 }
 
-const ScheduleSection: React.FC<ScheduleSectionProps> = ({ competitionType }) => {
+const ScheduleSection: React.FC<ScheduleSectionProps> = ({ competitionType, forceAnimation = false }) => {
   const [ref, inView] = useInView({
-    triggerOnce: true,
     threshold: 0.1,
+    initialInView: true,
   });
+
+  const [shouldAnimate, setShouldAnimate] = useState(false);
 
   const currentData = competitionType === 'drone-soccer' ? droneSoccerData : autonomousChallengeData;
   const day1Schedule = currentData.schedule.day1;
   const day2Schedule = currentData.schedule.day2;
+
+  useEffect(() => {
+    if (inView || forceAnimation) {
+      setShouldAnimate(true);
+    }
+  }, [inView, forceAnimation]);
 
   return (
     <section id="schedule" className="section-padding bg-light-gray">
@@ -25,7 +34,7 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({ competitionType }) =>
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
@@ -40,7 +49,7 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({ competitionType }) =>
         {/* Day 1 */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mb-16"
         >
@@ -61,7 +70,7 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({ competitionType }) =>
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
+                animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
                 whileHover={{ y: -5 }}
                 className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300"
@@ -85,7 +94,7 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({ competitionType }) =>
         {/* Day 2 */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.6 }}
           className="mb-16"
         >
@@ -106,7 +115,7 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({ competitionType }) =>
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
+                animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
                 whileHover={{ y: -5 }}
                 className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300"
@@ -130,7 +139,7 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({ competitionType }) =>
         {/* Schedule Features */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 1 }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
         >
