@@ -4,6 +4,7 @@ import { useInView } from 'react-intersection-observer';
 // @ts-ignore
 import { FaUsers, FaClock, FaTrophy, FaShieldAlt, FaCog, FaBalanceScale, FaBatteryFull } from 'react-icons/fa';
 import { droneSoccerData, autonomousChallengeData, CompetitionData } from '../data/competitionData';
+import ScrollingImageGallery from './ScrollingImageGallery';
 
 interface CompetitionSectionProps {
   competitionType: 'drone-soccer' | 'autonomous';
@@ -22,7 +23,6 @@ const CompetitionSection: React.FC<CompetitionSectionProps> = ({ competitionType
   const currentData: CompetitionData = competitionType === 'drone-soccer' ? droneSoccerData : autonomousChallengeData;
 
   const formatDetails = currentData.formatDetails;
-  const rules = currentData.rules;
   const equipmentSpecs = currentData.equipmentSpecs;
 
   useEffect(() => {
@@ -101,7 +101,7 @@ const CompetitionSection: React.FC<CompetitionSectionProps> = ({ competitionType
           ))}
         </motion.div>
 
-        {/* Rules & Regulations */}
+        {/* Preview - Image Gallery */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
@@ -110,22 +110,13 @@ const CompetitionSection: React.FC<CompetitionSectionProps> = ({ competitionType
         >
           <div className="bg-white/10 backdrop-blur-custom rounded-2xl p-8">
             <h3 className="text-2xl font-orbitron font-semibold mb-6 text-center">
-              Rules & Regulations
+              Your Equipment
             </h3>
-            <ul className="space-y-4">
-              {rules.map((rule, index) => (
-                <motion.li
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={shouldAnimate ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
-                  className="flex items-start space-x-3"
-                >
-                  <div className="w-2 h-2 bg-electric-blue rounded-full mt-2 flex-shrink-0"></div>
-                  <span className="text-gray-300">{rule}</span>
-                </motion.li>
-              ))}
-            </ul>
+            <div className="min-h-48">
+              <ScrollingImageGallery 
+                images={currentData.previewImages}
+              />
+            </div>
           </div>
 
           <div className="bg-white/10 backdrop-blur-custom rounded-2xl p-8">

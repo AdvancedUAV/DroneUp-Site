@@ -58,12 +58,13 @@ const Header: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             className="flex items-center space-x-2"
           >
-            <div className="w-10 h-10 bg-gradient-to-r from-electric-blue to-neon-green rounded-lg flex items-center justify-center">
+            <img src="/favicon.png" alt="DroneUp Logo" className="w-14 h-14" /> 
+            {/* <div className="w-10 h-10 bg-gradient-to-r from-electric-blue to-neon-green rounded-lg flex items-center justify-center">
               <span className="text-white font-orbitron font-bold text-lg">D</span>
-            </div>
-            <span className="text-2xl font-orbitron font-bold text-gradient">
+            </div> */}
+            {/* <span className="text-2xl font-orbitron font-bold text-gradient">
               DroneUp
-            </span>
+            </span> */}
           </motion.div>
 
           {/* Desktop Navigation */}

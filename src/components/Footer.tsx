@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
               </span>
             </div>
             <p className="text-gray-300 mb-6">
-              Calgary's premier youth drone competition. Experience the future of competitive sports.
+              Calgary's premier youth drone competition. 
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social) => (
@@ -69,7 +69,17 @@ const Footer: React.FC = () => {
               </div>
               <div className="flex items-center md:justify-end space-x-3">
                 {/* <FaPhone className="text-electric-blue" /> */}
-                <span className="text-gray-300">©2025-2026 AdvancedUAV Tech Inc. | Made with 💖 in Calgary</span>
+                <span className="text-gray-300">
+                  ©2025-2026 AdvancedUAV Tech Inc. |{' '}
+                  <a 
+                    href="https://github.com/NoozAbooz/DroneUp-Site" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-gray-300 hover:text-electric-blue transition-colors duration-300"
+                  >
+                    Made with 💖 in Calgary
+                  </a>
+                </span>
               </div>
             </div>
           </motion.div>

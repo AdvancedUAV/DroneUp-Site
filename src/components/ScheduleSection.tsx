@@ -144,8 +144,15 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({ competitionType, forc
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           <div className="bg-gradient-to-r from-electric-blue to-neon-green text-white rounded-xl p-6 text-center">
-            <h4 className="font-orbitron font-semibold mb-2">Flexible Timing</h4>
-            <p className="text-sm">Schedule may be adjusted based on participant numbers</p>
+            <h4 className="font-orbitron font-semibold mb-2">
+              {competitionType === 'drone-soccer' ? 'Matches' : 'Programming Trials'}
+            </h4>
+            <p className="text-sm">
+              {competitionType === 'drone-soccer' 
+                ? 'Time allocated for competition matches'
+                : 'Official programming trial runs to be ranked'
+              }
+            </p>
           </div>
           <div className="bg-gradient-to-r from-cyber-purple to-purple-400 text-white rounded-xl p-6 text-center">
             <h4 className="font-orbitron font-semibold mb-2">Break Times</h4>
@@ -153,7 +160,7 @@ const ScheduleSection: React.FC<ScheduleSectionProps> = ({ competitionType, forc
           </div>
           <div className="bg-gradient-to-r from-hot-pink to-pink-400 text-white rounded-xl p-6 text-center">
             <h4 className="font-orbitron font-semibold mb-2">
-              {competitionType === 'drone-soccer' ? 'Practice Sessions' : 'Development Time'}
+              {competitionType === 'drone-soccer' ? 'Practice Sessions' : 'Programming Sessions'}
             </h4>
             <p className="text-sm">
               {competitionType === 'drone-soccer' 
