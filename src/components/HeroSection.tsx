@@ -25,7 +25,7 @@ const HeroSection: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-deep-space via-deep-space to-black flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-screen bg-gradient-to-br from-deep-space via-deep-space to-black flex items-center justify-center overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-20 w-32 h-32 bg-electric-blue/20 rounded-full blur-3xl animate-pulse"></div>
@@ -48,7 +48,7 @@ const HeroSection: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-sm md:text-base text-electric-blue font-medium mb-4 tracking-wider uppercase"
           >
-            March 15-16, 2025 • Calgary, Alberta
+            March DD-DD, 2026 • Calgary, Alberta
           </motion.div>
           
           <motion.h1
@@ -66,7 +66,7 @@ const HeroSection: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-14"
           >
-            Calgary's premier youth drone competition featuring Drone Soccer and Autonomous Programming challenges
+            <span className="font-[1000]">Calgary's premier drone competition</span> is back, featuring Drone Soccer and Autonomous Programming challenges
           </motion.p>
         </motion.div>
 

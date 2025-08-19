@@ -8,6 +8,7 @@ export interface CompetitionData {
     color: string;
   }>;
   rules: string[];
+  previewImages: string[];
   equipmentSpecs: Array<{
     icon: any;
     title: string;
@@ -63,6 +64,9 @@ export const droneSoccerData: CompetitionData = {
     'Fair Play: Sportsmanship and respect for all participants',
     'Scoring System: Goals, assists, and technical skills evaluated.',
   ],
+  previewImages: [
+    '/images/a55.png',
+  ],
   equipmentSpecs: [
     {
       icon: FaCog,
@@ -94,16 +98,10 @@ export const droneSoccerData: CompetitionData = {
         color: 'from-electric-blue to-cyan-400',
       },
       {
-        time: '9:00 AM - 9:30 AM',
-        activity: 'Welcome and Safety Briefing',
+        time: '9:00 AM - 10:00 AM',
+        activity: 'Welcome and Equipment Setup',
         icon: FaClock,
         color: 'from-neon-green to-emerald-400',
-      },
-      {
-        time: '9:30 AM - 10:00 AM',
-        activity: 'Equipment Distribution and Setup',
-        icon: FaCog,
-        color: 'from-cyber-purple to-purple-400',
       },
       {
         time: '10:00 AM - 12:00 PM',
@@ -115,7 +113,7 @@ export const droneSoccerData: CompetitionData = {
         time: '12:00 PM - 1:00 PM',
         activity: 'Lunch Break',
         icon: FaUsers,
-        color: 'from-yellow-400 to-orange-400',
+        color: 'from-cyber-purple to-purple-400',
       },
       {
         time: '1:00 PM - 5:00 PM',
@@ -127,7 +125,7 @@ export const droneSoccerData: CompetitionData = {
         time: '5:00 PM - 6:00 PM',
         activity: 'Day 1 Wrap-up and Day 2 Preview',
         icon: FaClock,
-        color: 'from-cyber-purple to-purple-400',
+        color: 'from-electric-blue to-cyan-400',
       },
     ],
     day2: [
@@ -139,7 +137,7 @@ export const droneSoccerData: CompetitionData = {
       },
       {
         time: '8:30 AM - 9:00 AM',
-        activity: 'Day 2 Briefing and Rules Review',
+        activity: 'Day 2 Briefing',
         icon: FaClock,
         color: 'from-neon-green to-emerald-400',
       },
@@ -147,13 +145,13 @@ export const droneSoccerData: CompetitionData = {
         time: '9:00 AM - 12:00 PM',
         activity: 'Double-Elimination Tournament Rounds',
         icon: FaTrophy,
-        color: 'from-cyber-purple to-purple-400',
+        color: 'from-electric-blue to-neon-green',
       },
       {
         time: '12:00 PM - 1:00 PM',
         activity: 'Lunch Break',
         icon: FaUsers,
-        color: 'from-yellow-400 to-orange-400',
+        color: 'from-cyber-purple to-purple-400',
       },
       {
         time: '1:00 PM - 4:00 PM',
@@ -165,7 +163,7 @@ export const droneSoccerData: CompetitionData = {
         time: '4:00 PM - 5:00 PM',
         activity: 'Awards Ceremony and Closing Remarks',
         icon: FaTrophy,
-        color: 'from-hot-pink to-pink-400',
+        color: 'from-yellow-400 to-orange-400',
       },
     ],
   },
@@ -204,6 +202,9 @@ export const autonomousChallengeData: CompetitionData = {
     'Collaboration: Team members can work together on solutions',
     'Documentation: Code should be readable by judges',
     'Testing: Participants are able to test their code on physical drones',
+  ],
+  previewImages: [
+    '/images/a55.png',
   ],
   equipmentSpecs: [
     {
