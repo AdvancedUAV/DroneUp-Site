@@ -25,7 +25,7 @@ const HeroSection: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-deep-space via-deep-space to-black flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-screen bg-gradient-to-br from-deep-space via-deep-space to-black flex items-center justify-center overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-20 w-32 h-32 bg-electric-blue/20 rounded-full blur-3xl animate-pulse"></div>
@@ -48,7 +48,7 @@ const HeroSection: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-sm md:text-base text-electric-blue font-medium mb-4 tracking-wider uppercase"
           >
-            March 15-16, 2025 • Calgary, Alberta
+            March DD-DD, 2026 • Calgary, Alberta
           </motion.div>
           
           <motion.h1
