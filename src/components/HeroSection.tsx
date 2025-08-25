@@ -66,7 +66,7 @@ const HeroSection: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-14"
           >
-            <span className="font-[1000]">Calgary's premier drone competition</span> is back, featuring Drone Soccer and Autonomous Programming challenges
+            <span className="font-[1000]">Calgary's premier drone competition</span> is back, challenging participants in Drone Soccer and Autonomous Programming
           </motion.p>
         </motion.div>
 
