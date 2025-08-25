@@ -19,21 +19,21 @@ const GallerySection: React.FC = () => {
       type: 'image',
       src: 'https://auav.ca/wp-content/uploads/2025/07/R62_7224-DP3-1024x683.jpg',
       alt: '',
-      category: 'Action Photos',
+      category: 'Gameplay',
     },
     {
       id: 2,
       type: 'image',
       src: 'https://auav.ca/wp-content/uploads/2025/07/R62_7335-DP3-1024x683.jpg',
       alt: '',
-      category: 'Participant Photos',
+      category: 'Participants',
     },
     {
       id: 3,
       type: 'image',
       src: 'https://auav.ca/wp-content/uploads/2025/07/R62_7457-DP3-1024x683.jpg',
       alt: '',
-      category: 'Participant Photos',
+      category: 'Participants',
     },
     {
       id: 4,
@@ -47,18 +47,18 @@ const GallerySection: React.FC = () => {
       type: 'image',
       src: 'https://auav.ca/wp-content/uploads/2025/07/R62_6985-DP3-1024x683.jpg',
       alt: '',
-      category: 'Action Photos',
+      category: 'Gameplay',
     },
     {
       id: 6,
       type: 'image',
       src: 'https://auav.ca/wp-content/uploads/2025/07/R62_7257-DP3-1024x683.jpg',
       alt: '',
-      category: 'Participant Photos',
+      category: 'Participants',
     },
   ];
 
-  const categories = ['All', 'Action Photos', 'Team Photos', 'Arena Photos', 'Video Content', 'Participant Photos'];
+  const categories = ['All', 'Gameplay', 'Team Photos', 'Arena', 'Videos', 'Participants'];
 
   // Filter gallery items based on selected category
   const filteredItems = selectedCategory === 'All' 

@@ -25,9 +25,10 @@ const Footer: React.FC = () => {
             className="md:w-1/2"
           >
             <div className="flex items-center space-x-2 mb-6">
-              <div className="w-10 h-10 bg-gradient-to-r from-electric-blue to-neon-green rounded-lg flex items-center justify-center">
+              {/* <div className="w-10 h-10 bg-gradient-to-r from-electric-blue to-neon-green rounded-lg flex items-center justify-center">
                 <span className="text-white font-orbitron font-bold text-lg">D</span>
-              </div>
+              </div> */}
+              <img src="/favicon.png" alt="DroneUp Logo" className="w-14 h-14" />
               <span className="text-2xl font-orbitron font-bold text-gradient">
                 DroneUp
               </span>
