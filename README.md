@@ -1,7 +1,5 @@
 # DroneUp Website
 
-Calgary's Premier Youth Drone Competition - A modern, sleek, one-page React website showcasing the DroneUp drone soccer competition.
-
 ## 🚀 Features
 
 - **Modern Design**: Sleek, aesthetic design with bold choices and smooth animations
