@@ -66,7 +66,7 @@ const Footer: React.FC = () => {
               </div>
               <div className="flex items-center md:justify-end space-x-3">
                 <FaMapMarkerAlt className="text-electric-blue" />
-                <span className="text-gray-300">1423 45 Ave NE, Calgary, AB</span>
+                <span className="text-gray-300">1423 45 Ave NE, Calgary, Alberta</span>
               </div>
               <div className="flex items-center md:justify-end space-x-3">
                 {/* <FaPhone className="text-electric-blue" /> */}
