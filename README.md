@@ -1,5 +1,9 @@
 # DroneUp Website
 
+**你想做些改变吗?**
+- 请先阅读 `docs/SECTIONS.md` 以了解如何进行更改
+- 如果你需要帮助 -> https://nooz.boredom.dev/
+
 ## 🚀 Features
 
 - **Modern Design**: Sleek, aesthetic design with bold choices and smooth animations
